@@ -1,15 +1,24 @@
 <section class="survey-questions">
 
-  
+<div ng-repeat='question in survey'>
+  <!-- <div>{{question.template}}</div> -->
+  <div ng-bind-html="question.template"></div>
+</div>
+
+  <!-- <div ng-repeat='question in survey'>
+    <input placeholder="question">
+    <input type='checkbox'>Yes<br>
+    <input type='checkbox'>no<br>
+  </div> -->
 
 </section>
 
 <section class="survey-format">
 
-  <button class="create-question">Yes or No</button>
-  <button class="create-question">Multiple Choice</button>
-  <button class="create-question">Dropdown</button>
-  <button class="create-question">Ranking</button>
-  <button class="create-question">Text Field</button>
+  <button class="create-question" ng-click='yesOrNo()'>Yes or No</button>
+  <button class="create-question" ng-click='multipleChoice()'>Multiple Choice</button>
+  <button class="create-question" ng-click='dropdown()'>Dropdown</button>
+  <button class="create-question" ng-click='ranking()'>Ranking</button>
+  <button class="create-question" ng-click='textField()'>Text Field</button>
 
 </section>

@@ -1,18 +1,21 @@
+
+
+
 .navagation {
-  display: inline-block;
-}
+  display: inline-block; }
+
 .drag-box {
   border: solid 1px red;
   width: 120px;
   height: 20px;
-  text-align: center;
-}
+  text-align: center; }
+
 .survey-questions {
   width: 63%;
   height: 100vh;
   float: left;
-  border: solid 1px pink;
-}
+  border: solid 1px pink; }
+
 .survey-format {
   width: 34%;
   height: 100vh;
@@ -21,5 +24,8 @@
   display: flex;
   justify-content: space-around;
   flex-direction: column;
-  text-align: center;
-}
+  text-align: center; }
+
+
+
+
