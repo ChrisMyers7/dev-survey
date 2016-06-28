@@ -23,13 +23,13 @@ angular.module('dev-survey')
 
     $scope.ranking = function() {
       $scope.survey.push({
-        template: $sce.trustAsHtml('<input placeholder="question"> <input type="text" placeholder="Option 1"> <input type="text" placeholder="Option 2"> <input type="text" placeholder="Option 3"><input type="text" placeholder="Option 4">')
+        template: $sce.trustAsHtml('<input placeholder="question"> <input type="text" placeholder="Input 1"> <input type="text" placeholder="Input 2"> <input type="text" placeholder="Input 3"><input type="text" placeholder="Input 4">')
       })
     }
 
     $scope.textField = function() {
       $scope.survey.push({
-
+        template: $sce.trustAsHtml('<input placeholder="question"> ')
       })
     }
 
