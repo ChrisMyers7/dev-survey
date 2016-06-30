@@ -1,4 +1,4 @@
-
+const SurveyModel = require('../models/surveyModel')
 
 module.exports = {
   index: function(req, res, next) {

@@ -70,37 +70,65 @@ angular.module('dev-survey')
   }])
 
 angular.module('dev-survey')
-  .controller('createSurveyCtrl', ["$scope", "$sce", function($scope, $sce) {
+  .controller('createSurveyCtrl', ["$scope", "$sce", "questionService", function($scope, $sce, questionService) {
 
     $scope.survey = [];
 
+    $scope.savedSurvey = {
+      survey_name: $scope.survey_name,
+      yesOrNo_questions: [],
+      multipleChoice_questions: [],
+      ranking_questions: [],
+      textField_questions: []
+    }
+
     $scope.yesOrNo = function() {
       $scope.survey.push({
-        template: $sce.trustAsHtml('<input placeholder="question"> <input type="checkbox">Yes<br> <input type="checkbox">no<br>')
+        template: $sce.trustAsHtml('<input ng-model="question.question" placeholder="question"> <button ng-click="save(survey)">save</button>')
       })
+    }
+
+    $scope.save = function(e) {
+      console.log(e);
+      questionService.addYesOrNo($scope.question).then(function(response) {
+        $scope.savedSurvey.yesOrNo_questions.push(response.data._id);
+        console.log(response);
+      })
+
     }
 
     $scope.multipleChoice = function() {
-      $scope.survey.push({
-        template: $sce.trustAsHtml('<input placeholder="question"> <input type="text" placeholder="Option 1"> <input type="text" placeholder="Option 2"> <input type="text" placeholder="Option 3"><input type="text" placeholder="Option 4">')
+      questionService.multipleChoice().then(function(response) {
+        console.log(response);
+        $scope.survey.push({
+          template: $sce.trustAsHtml('<input placeholder="question"> <input type="text" placeholder="Option 1"> <input type="text" placeholder="Option 2"> <input type="text" placeholder="Option 3"><input type="text" placeholder="Option 4">'),
+          _id: response.data._id
+        })
+        console.log($scope.survey);
       })
-    }
 
-    $scope.dropdown = function() {
-      $scope.survey.push({
-
-      })
     }
 
     $scope.ranking = function() {
-      $scope.survey.push({
-        template: $sce.trustAsHtml('<input placeholder="question"> <input type="text" placeholder="Input 1"> <input type="text" placeholder="Input 2"> <input type="text" placeholder="Input 3"><input type="text" placeholder="Input 4">')
+      questionService.ranking().then(function(response) {
+        console.log(response);
+        $scope.survey.push({
+          template: $sce.trustAsHtml('<input placeholder="question"> <input type="text" placeholder="Input 1"> <input type="text" placeholder="Input 2"> <input type="text" placeholder="Input 3"><input type="text" placeholder="Input 4">'),
+          _id: response.data._id
+        })
+        console.log($scope.survey);
       })
+
     }
 
     $scope.textField = function() {
-      $scope.survey.push({
-        template: $sce.trustAsHtml('<input placeholder="question"> ')
+      questionService.textField().then(function(response) {
+        console.log(response);
+        $scope.survey.push({
+          template: $sce.trustAsHtml('<input placeholder="question"> '),
+          _id: response.data._id
+        })
+        console.log($scope.survey);
       })
     }
 
@@ -133,5 +161,65 @@ angular.module('dev-survey')
   .controller('userHomeCtrl', ["$scope", function($scope) {
 
     $scope.test = 'userHomeCtrl'
+
+  }])
+
+angular.module('dev-survey')
+  .directive('yesOrNoDirective', function() {
+    return {
+      restrict: 'E',
+      templateUrl: '../templates/yesOrNoTmpl.html' 
+    }
+  })
+
+angular.module('dev-survey')
+  .service('questionService', ["$http", function($http) {
+
+    this.addYesOrNo = function() {
+      return $http({
+        method: 'POST',
+        url: 'http://localhost:3000/api/yesOrNoQuestions',
+        data: {
+          question: 'is school good?',
+          mustAnswer: 'yes'
+        }
+      })
+    }
+
+    this.multipleChoice = function() {
+      return $http({
+        method: 'POST',
+        url: 'http://localhost:3000/api/multipleChoiceQuestions',
+        data: {
+          question: 'is school good?',
+          mustAnswer: 'no',
+          options: ['dasdfadsfsd', 'dasdfasdfafasd', 'asdfasdfdd']
+        }
+      })
+    }
+
+    this.ranking = function() {
+      return $http({
+        method: 'POST',
+        url: 'http://localhost:3000/api/rankingQuestions',
+        data: {
+          question: 'is school good?',
+          mustAnswer: 'no',
+          rankings: ['dasdfadsfsd', 'dasdfasdfafasd', 'asdfasdfdd']
+        }
+      })
+    }
+
+    this.textField = function() {
+      return $http({
+        method: 'POST',
+        url: 'http://localhost:3000/api/textFieldQuestions',
+        data: {
+          question: 'is school good?',
+          mustAnswer: 'no',
+          text: 'Hello i am chris'
+        }
+      })
+    }
 
   }])

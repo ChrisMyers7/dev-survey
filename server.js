@@ -1,25 +1,29 @@
 // node packages
-var express = require('express');
-var bodyParser = require('body-parser');
-var cors = require('cors');
-var mongoose = require('mongoose');
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const mongoose = require('mongoose');
 
 // controllers
-var completedSurveyCtrl = require('./controllers/completedSurveyCtrl')
-var surveyCtrl = require('./controllers/surveyCtrl');
-var userCtrl = require('./controllers/userCtrl')
+const completedSurveyCtrl = require('./controllers/completedSurveyCtrl')
+const surveyCtrl = require('./controllers/surveyCtrl');
+const userCtrl = require('./controllers/userCtrl')
+const yesOrNoCtrl = require('./controllers/yesOrNoCtrl')
+const multipleChoiceCtrl = require('./controllers/multipleChoiceCtrl')
+const rankingCtrl = require('./controllers/rankingCtrl')
+const textFieldCtrl = require('./controllers/textFieldCtrl')
 
 // models/collections
-var CompletedSurveyModel = require('./models/completedSurveyModel')
-var SurveyModel = require('./models/surveyModel')
-var UserModel = require('./models/userModel')
+// const CompletedSurveyModel = require('./models/completedSurveyModel')
+// const SurveyModel = require('./models/surveyModel')
+// const UserModel = require('./models/userModel')
 
-// initialization of express app
-var app = express();
+// initialization of express app and mongoose
+const app = express();
 mongoose.connect('mongodb://localhost/dev-survey');
 
 // enabaling cross origin requests
-var corsOptions = {
+const corsOptions = {
   origin: 'http://localhost:3000'
 }
 
@@ -28,22 +32,38 @@ app.use(cors(corsOptions));
 app.use(express.static(__dirname + '/public'))
 
 // users endpoints
-app.get('/users', userCtrl.index);
-app.post('/users', userCtrl.create);
-app.put('/users', userCtrl.update);
+app.get('/api/users', userCtrl.index);
+app.post('/api/users', userCtrl.create);
+app.put('/api/users', userCtrl.update);
 
 // surveys endpoints
-app.get('/surveys', surveyCtrl.index);
-app.get('/surveys/:id', surveyCtrl.show);
-app.post('/surveys', surveyCtrl.create);
-app.put('/surveys/:id', surveyCtrl.update);
-app.delete('/surveys/:id', surveyCtrl.delete);
+app.get('/api/surveys', surveyCtrl.index);
+app.get('/api/surveys/:id', surveyCtrl.show);
+app.post('/api/surveys', surveyCtrl.create);
+app.put('/api/surveys/:id', surveyCtrl.update);
+app.delete('/api/surveys/:id', surveyCtrl.delete);
 
 // completedSurvey endpoints
-app.get('/completedSurvey', completedSurveyCtrl.index);
-app.put('/completedSurvey', completedSurveyCtrl.update);
+app.get('/api/completedSurvey', completedSurveyCtrl.index);
+app.put('/api/completedSurvey', completedSurveyCtrl.update);
 
-var port = 3000
+// yes or no Question endpoints
+app.get('/api/yesOrNoQuestions', yesOrNoCtrl.index);
+app.post('/api/yesOrNoQuestions', yesOrNoCtrl.create)
+
+// multiple choice Question endpoints
+app.get('/api/multipleChoiceQuestions', multipleChoiceCtrl.index);
+app.post('/api/multipleChoiceQuestions', multipleChoiceCtrl.create)
+
+// ranking Question endpoints
+app.get('/api/rankingQuestions', rankingCtrl.index);
+app.post('/api/rankingQuestions', rankingCtrl.create)
+
+// Text Field Question endpoints
+app.get('/api/textFieldQuestions', textFieldCtrl.index);
+app.post('/api/textFieldQuestions', textFieldCtrl.create)
+
+const port = 3000
 app.listen(port, function() {
   console.log('Hey!! Listening... port: ' + port)
 })
