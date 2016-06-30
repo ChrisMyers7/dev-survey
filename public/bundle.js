@@ -84,7 +84,7 @@ angular.module('dev-survey')
 
     $scope.yesOrNo = function() {
       $scope.survey.push({
-        template: $sce.trustAsHtml('<input ng-model="question.question" placeholder="question"> <button ng-click="save(survey)">save</button>')
+        template: $sce.trustAsHtml('<input ng-model="question.question" placeholder="question"> <button ng-click="save(question)">save</button>')
       })
     }
 
@@ -101,7 +101,7 @@ angular.module('dev-survey')
       questionService.multipleChoice().then(function(response) {
         console.log(response);
         $scope.survey.push({
-          template: $sce.trustAsHtml('<input placeholder="question"> <input type="text" placeholder="Option 1"> <input type="text" placeholder="Option 2"> <input type="text" placeholder="Option 3"><input type="text" placeholder="Option 4">'),
+          template: $sce.trustAsHtml('<input placeholder="question"> <input type="text" placeholder="Option 1"> <input type="text" placeholder="Option 2"> <input type="text" placeholder="Option 3"><input type="text" placeholder="Option 4"> <button ng-click="save(question)">save</button>'),
           _id: response.data._id
         })
         console.log($scope.survey);
@@ -113,7 +113,7 @@ angular.module('dev-survey')
       questionService.ranking().then(function(response) {
         console.log(response);
         $scope.survey.push({
-          template: $sce.trustAsHtml('<input placeholder="question"> <input type="text" placeholder="Input 1"> <input type="text" placeholder="Input 2"> <input type="text" placeholder="Input 3"><input type="text" placeholder="Input 4">'),
+          template: $sce.trustAsHtml('<input placeholder="question"> <input type="text" placeholder="Input 1"> <input type="text" placeholder="Input 2"> <input type="text" placeholder="Input 3"><input type="text" placeholder="Input 4"> <button ng-click="save(question)">save</button>'),
           _id: response.data._id
         })
         console.log($scope.survey);
@@ -125,7 +125,7 @@ angular.module('dev-survey')
       questionService.textField().then(function(response) {
         console.log(response);
         $scope.survey.push({
-          template: $sce.trustAsHtml('<input placeholder="question"> '),
+          template: $sce.trustAsHtml('<input placeholder="question"> <button ng-click="save(question)">save</button>'),
           _id: response.data._id
         })
         console.log($scope.survey);
@@ -165,12 +165,28 @@ angular.module('dev-survey')
   }])
 
 angular.module('dev-survey')
+.directive('compileTemplate', ["$compile", "$parse", function($compile, $parse){
+    return {
+        link: function(scope, element, attr){
+            var parsed = $parse(attr.ngBindHtml);
+            function getStringValue() { return (parsed(scope) || '').toString(); }
+
+            //Recompile if the template changes
+            scope.$watch(getStringValue, function() {
+                $compile(element, null, -9999)(scope);  //The -9999 makes it skip directives so that we do not recompile ourselves
+            });
+        }
+    }
+}]);
+
+angular.module('dev-survey')
   .directive('yesOrNoDirective', function() {
     return {
       restrict: 'E',
-      templateUrl: '../templates/yesOrNoTmpl.html' 
+      templateUrl: '../js/templates/yesOrNoTmpl.html'
     }
   })
+  
 
 angular.module('dev-survey')
   .service('questionService', ["$http", function($http) {
