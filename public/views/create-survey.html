@@ -1,17 +1,14 @@
 <section class="survey-questions">
 
+  <input type="text" placeholder="Survey Name" ng-model='surveyName'>
 
   <div ng-repeat='question in survey'>
-    <!-- <div>{{question.template}}</div> -->
+
     <div ng-bind-html="question.template" compile-template></div>
-    <button ng-click="save('hello')">save</button>
+
   </div>
 
-  <!-- <div ng-repeat='question in survey'>
-    <input placeholder="question">
-    <input type='checkbox'>Yes<br>
-    <input type='checkbox'>no<br>
-  </div> -->
+  <button ng-click='savedSurvey()'>Save Survey</button>
 
 </section>
 

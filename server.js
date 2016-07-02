@@ -13,11 +13,6 @@ const multipleChoiceCtrl = require('./controllers/multipleChoiceCtrl')
 const rankingCtrl = require('./controllers/rankingCtrl')
 const textFieldCtrl = require('./controllers/textFieldCtrl')
 
-// models/collections
-// const CompletedSurveyModel = require('./models/completedSurveyModel')
-// const SurveyModel = require('./models/surveyModel')
-// const UserModel = require('./models/userModel')
-
 // initialization of express app and mongoose
 const app = express();
 mongoose.connect('mongodb://localhost/dev-survey');

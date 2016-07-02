@@ -29,14 +29,42 @@ module.exports = {
     })
   },
   update: function(req, res, next) {
-    SurveyModel.findByIdAndUpdate({_id: req.params.id}, function(err, survey) {
-      if (err) {
-        res.status(500).json(err)
-      } else {
-        res.status(200).json(survey)
-      }
-    })
-  },
+    // req.body.id = String(req.body.id)
+    console.log(req.body.id)
+    if (req.query.type === 'yesorno') {
+      SurveyModel.findByIdAndUpdate({_id: req.params.id}, {$push: {yesOrNo_questions: req.body.id}}, function(err, survey) {
+        if (err) {
+          res.status(500).json(err)
+        } else {
+          res.status(200).json(survey)
+        }
+      })
+    } if (req.query.type === 'multiplechoice') {
+      SurveyModel.findByIdAndUpdate({_id: req.params.id}, {$push: {multipleChoice_questions: req.body.id}}, function(err, survey) {
+        if (err) {
+          res.status(500).json(err)
+        } else {
+          res.status(200).json(survey)
+        }
+      })
+    } if (req.query.type === 'ranking') {
+      SurveyModel.findByIdAndUpdate({_id: req.params.id}, {$push: {ranking_questions: req.body.id}}, function(err, survey) {
+        if (err) {
+          res.status(500).json(err)
+        } else {
+          res.status(200).json(survey)
+        }
+      })
+    } if (req.query.type === 'textfield') {
+      SurveyModel.findByIdAndUpdate({_id: req.params.id}, {$push: {textField_questions: req.body.id}}, function(err, survey) {
+        if (err) {
+          res.status(500).json(err)
+        } else {
+          res.status(200).json(survey)
+        }
+      })
+    }
+},
   delete: function(req, res, next) {
     SurveyModel.remove({_id: req.params.id}, function(err, surveys) {
       if (err) {

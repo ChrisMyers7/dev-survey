@@ -1,50 +1,35 @@
 angular.module('dev-survey')
   .service('questionService', function($http) {
 
-    this.addYesOrNo = function() {
+    this.yesOrNo = function(question) {
       return $http({
         method: 'POST',
         url: 'http://localhost:3000/api/yesOrNoQuestions',
-        data: {
-          question: 'is school good?',
-          mustAnswer: 'yes'
-        }
+        data: question
       })
     }
 
-    this.multipleChoice = function() {
+    this.multipleChoice = function(question) {
       return $http({
         method: 'POST',
         url: 'http://localhost:3000/api/multipleChoiceQuestions',
-        data: {
-          question: 'is school good?',
-          mustAnswer: 'no',
-          options: ['dasdfadsfsd', 'dasdfasdfafasd', 'asdfasdfdd']
-        }
+        data: question
       })
     }
 
-    this.ranking = function() {
+    this.ranking = function(question) {
       return $http({
         method: 'POST',
         url: 'http://localhost:3000/api/rankingQuestions',
-        data: {
-          question: 'is school good?',
-          mustAnswer: 'no',
-          rankings: ['dasdfadsfsd', 'dasdfasdfafasd', 'asdfasdfdd']
-        }
+        data: question
       })
     }
 
-    this.textField = function() {
+    this.textField = function(question) {
       return $http({
         method: 'POST',
         url: 'http://localhost:3000/api/textFieldQuestions',
-        data: {
-          question: 'is school good?',
-          mustAnswer: 'no',
-          text: 'Hello i am chris'
-        }
+        data: question
       })
     }
 
