@@ -1,6 +1,13 @@
 angular.module('dev-survey')
   .service('surveyService', function($http, $q) {
 
+    this.getSurveys = function() {
+      return $http({
+        method: 'GET',
+        url: 'http://localhost:3000/api/surveys'
+      })
+    }
+
     this.addSurvey = function(surveyName, yesOrNo, multipleChoice, ranking, textField) {
         var deffered = $q.defer();
 

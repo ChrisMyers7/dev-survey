@@ -1,0 +1,108 @@
+.user-modal-background {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  background: rgba(102, 102, 102, 0.3);
+}
+
+.user-modal {
+  height: 80vh;
+  width: 50%;
+  top: 10vh;
+  left: 25%;
+  background: white;
+  position: fixed;
+  z-index: 200;
+  opacity: .99;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center;
+
+    div {
+      background: purple;
+      width: 75%;
+      margin: auto;
+
+        div {
+          color: blue;
+          height: 15px;
+          width: 75%;
+          margin: auto;
+        }
+    }
+
+      button {
+        margin-bottom: 5%;
+        width: 50%;
+        height: 30px;
+        margin: auto;
+      }
+}
+
+.admin-cont {
+  background: blue;
+  height: 100vh;
+  width: 100%;
+    header {
+      background: red;
+      height: 10vh;
+      width: 100%;
+    }
+
+      .survey-cont {
+        background: pink;
+        height: 70vh;
+        width: 100%;
+        text-align: center;
+          section {
+            background: violet;
+            height: 70vh;
+            width: 70%;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+
+              div {
+                background: grey;
+                // height: 100vh;
+                // width: 100%;
+              }
+
+              div:hover {
+                background: white;
+                cursor: pointer;
+              }
+          }
+
+    }
+
+      .admin-create-cont {
+        background: yellow;
+        height: 20vh;
+        width: 100%;
+        text-align: center;
+
+            section {
+              background: purple;
+              height: 20vh;
+              width: 70%;
+              text-align: center;
+              margin: auto;
+
+                button {
+                  background: blue;
+                  height: 10vh;
+                  width: 80%;
+                  text-align: center;
+                }
+
+                button:hover {
+                  cursor: pointer;
+                  background: green;
+                }
+            }
+      }
+
+}

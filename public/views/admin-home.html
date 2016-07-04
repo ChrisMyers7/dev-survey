@@ -1,1 +1,51 @@
-{{test}}
+<!-- modals for displaying users -->
+<section class="user-modal-background" ng-if='hideModal' ng-click='displayModal()'>
+
+
+
+</section>
+
+<section class="user-modal" ng-if='hideModal'>
+
+  <div ng-repeat='user in users'>
+
+    <div>{{user.first_name}} {{user.last_name}}</div>
+
+    <div>{{user.company_name}}</div>
+
+    <div>{{user.email}}</div>
+
+    <input type="checkbox">
+
+  </div>
+
+  <button ng-click='sendSurvey()'>Send Survey</button>
+
+</section>
+
+<!-- Content that is immediatly seen with all the surveys-->
+<section class="admin-cont">
+
+  <header class="admin-nav-cont"></header>
+
+  <section class="survey-cont">
+
+    <section class="display-survey-cont">
+
+      <div ng-repeat='survey in surveys' class="admin-survey-display" ng-click='displayModal()'>{{survey.survey_name}}</div>
+
+    </section>
+
+  </section>
+
+  <section class="admin-create-cont">
+
+    <section>
+
+      <button class="create-survey" ui-sref='createSurvey'>Create Survey</button>
+
+    </section>
+
+  </section>
+
+</section>

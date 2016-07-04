@@ -7,16 +7,6 @@ angular.module('dev-survey', ['ui.router'])
         templateUrl: '../views/home.html',
         controller: 'homeCtrl'
       })
-      .state('login', {
-        url: '/login',
-        templateUrl: '../views/login.html',
-        controller: 'loginCtrl'
-      })
-      .state('register', {
-        url: '/register',
-        templateUrl: '../views/register.html',
-        controller: 'registerCtrl'
-      })
       .state('adminHome', {
         url: '/adminhome',
         templateUrl: '../views/admin-home.html',

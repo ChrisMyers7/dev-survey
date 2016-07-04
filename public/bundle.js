@@ -7,16 +7,6 @@ angular.module('dev-survey', ['ui.router'])
         templateUrl: '../views/home.html',
         controller: 'homeCtrl'
       })
-      .state('login', {
-        url: '/login',
-        templateUrl: '../views/login.html',
-        controller: 'loginCtrl'
-      })
-      .state('register', {
-        url: '/register',
-        templateUrl: '../views/register.html',
-        controller: 'registerCtrl'
-      })
       .state('adminHome', {
         url: '/adminhome',
         templateUrl: '../views/admin-home.html',
@@ -56,9 +46,30 @@ angular.module('dev-survey')
   }])
 
 angular.module('dev-survey')
-  .controller('adminHomeCtrl', ["$scope", function($scope) {
+  .controller('adminHomeCtrl', ["$scope", "surveyService", "userService", function($scope, surveyService, userService) {
 
-    $scope.test = 'adminHomesCtrl'
+    $scope.hideModal = '';
+
+    $scope.users = [];
+
+    $scope.displayModal = function() {
+      $scope.hideModal = !$scope.hideModal;
+      if ($scope.hideModal) {
+        userService.getUsers().then(function(response) {
+          $scope.users = response.data;
+        })
+      }
+    }
+
+    $scope.surveys = []
+
+    function getSurveys() {
+      surveyService.getSurveys().then(function(response) {
+        $scope.surveys = response.data;
+      })
+    }
+
+    getSurveys()
 
   }])
 
@@ -161,23 +172,36 @@ angular.module('dev-survey')
   }])
 
 angular.module('dev-survey')
-  .controller('homeCtrl', ["$scope", function($scope) {
+  .controller('homeCtrl', ["$scope", "userService", function($scope, userService) {
 
-    $scope.test = 'homeCtrl'
+    $scope.loginClick = '';
 
-  }])
+    $scope.registerClick = '';
 
-angular.module('dev-survey')
-  .controller('loginCtrl', ["$scope", function($scope) {
+    $scope.toggleLogin = function() {
+      if ($scope.registerClick) {
+        $scope.registerClick = '';
+      }
+      $scope.loginClick = !$scope.loginClick;
+    }
 
-    $scope.test = 'loginCtrl'
+    $scope.toggleRegister = function() {
+      if ($scope.loginClick) {
+        $scope.loginClick = '';
+      }
+      $scope.registerClick = !$scope.registerClick;
+    }
 
-  }])
+    // $scope.login() {
+    //
+    // }
 
-angular.module('dev-survey')
-  .controller('registerCtrl', ["$scope", function($scope) {
+    $scope.saveUser = function(user) {
+      userService.registerUser(user).then(function(response) {
+        console.log(response);
+      })
+    }
 
-    $scope.test = 'registerCtrl'
 
   }])
 
@@ -251,6 +275,13 @@ angular.module('dev-survey')
 
 angular.module('dev-survey')
   .service('surveyService', ["$http", "$q", function($http, $q) {
+
+    this.getSurveys = function() {
+      return $http({
+        method: 'GET',
+        url: 'http://localhost:3000/api/surveys'
+      })
+    }
 
     this.addSurvey = function(surveyName, yesOrNo, multipleChoice, ranking, textField) {
         var deffered = $q.defer();
@@ -330,4 +361,24 @@ angular.module('dev-survey')
 
       return deffered.promise
     }
+  }])
+
+angular.module('dev-survey')
+  .service('userService', ["$http", function($http) {
+
+    this.registerUser = function(user) {
+      return $http({
+        method: 'POST',
+        url: 'http://localhost:3000/api/users',
+        data: user
+      })
+    }
+
+    this.getUsers = function() {
+      return $http({
+        method: 'GET',
+        url: 'http://localhost:3000/api/users'
+      })
+    }
+
   }])

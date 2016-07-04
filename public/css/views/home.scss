@@ -1,0 +1,41 @@
+.home-cont {
+  background: lightblue;
+  height: 100vh;
+  width: 100%;
+  text-align: center;
+
+    header {
+      background: blue;
+      height: 10vh;
+      width: 100%;
+    }
+
+    section {
+      background: maroon;
+      height: 90vh;
+      width:  70%;
+      display: flex;
+      margin: auto;
+      flex-direction: column;
+      justify-content: center;
+
+        .home-login-cont {
+          background: purple;
+        }
+
+        .login-input {
+          height: 100vh;
+          width: 70%;
+        }
+
+        .home-register-cont {
+          background: lightgreen;
+        }
+
+        button {
+          height: 10vh;
+          margin: auto;
+          width: 70%;
+        }
+    }
+}

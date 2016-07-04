@@ -1,4 +1,4 @@
-
+var UserModel = require('../models/userModel');
 
 module.exports = {
   index: function(req, res, next) {

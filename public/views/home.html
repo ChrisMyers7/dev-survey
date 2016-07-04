@@ -1,1 +1,39 @@
-{{test}}
+<section class="home-cont">
+
+  <header></header>
+
+  <section class="login-register-cont">
+
+    <button class="home-login-cont" ng-click='toggleLogin()'>Login</button>
+
+    <section class="login-input" ng-if='loginClick'>
+
+      <input class="user-input-fields" placeholder="Email" type="text" ng-model='email'>
+
+      <input class="user-input-fields" placeholder="Password" type="text" ng-model='password'>
+
+      <button ng-click='login()'>Login</button>
+
+    </section>
+
+    <button class="home-register-cont" ng-click='toggleRegister()'>Register</button>
+
+    <section class='register-input' ng-if="registerClick">
+
+      <input class="user-input-fields" placeholder="First Name" type="text" ng-model='user.first_name'>
+
+      <input class="user-input-fields" placeholder="Last Name" type="text" ng-model='user.last_name'>
+
+      <input class="user-input-fields" placeholder="Company Name" type="text" ng-model='user.company_name'>
+
+      <input class="user-input-fields" placeholder="Email" type="text" ng-model='user.email'>
+
+      <input class="user-input-fields" placeholder="Password" type="text" ng-model='user.password'>
+
+      <button ng-click='saveUser(user)'>Register as User</button>
+
+    </section>
+
+  </section>
+
+</section>

@@ -1,4 +1,83 @@
 
+.user-modal-background {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  background: rgba(102, 102, 102, 0.3); }
+
+.user-modal {
+  height: 80vh;
+  width: 50%;
+  top: 10vh;
+  left: 25%;
+  background: white;
+  position: fixed;
+  z-index: 200;
+  opacity: .99;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  text-align: center; }
+  .user-modal div {
+    background: purple;
+    width: 75%;
+    margin: auto; }
+    .user-modal div div {
+      color: blue;
+      height: 15px;
+      width: 75%;
+      margin: auto; }
+  .user-modal button {
+    margin-bottom: 5%;
+    width: 50%;
+    height: 30px;
+    margin: auto; }
+
+.admin-cont {
+  background: blue;
+  height: 100vh;
+  width: 100%; }
+  .admin-cont header {
+    background: red;
+    height: 10vh;
+    width: 100%; }
+  .admin-cont .survey-cont {
+    background: pink;
+    height: 70vh;
+    width: 100%;
+    text-align: center; }
+    .admin-cont .survey-cont section {
+      background: violet;
+      height: 70vh;
+      width: 70%;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around; }
+      .admin-cont .survey-cont section div {
+        background: grey; }
+      .admin-cont .survey-cont section div:hover {
+        background: white;
+        cursor: pointer; }
+  .admin-cont .admin-create-cont {
+    background: yellow;
+    height: 20vh;
+    width: 100%;
+    text-align: center; }
+    .admin-cont .admin-create-cont section {
+      background: purple;
+      height: 20vh;
+      width: 70%;
+      text-align: center;
+      margin: auto; }
+      .admin-cont .admin-create-cont section button {
+        background: blue;
+        height: 10vh;
+        width: 80%;
+        text-align: center; }
+      .admin-cont .admin-create-cont section button:hover {
+        cursor: pointer;
+        background: green; }
 
 
 .navagation {
@@ -33,6 +112,32 @@
   .survey-format button:hover {
     cursor: pointer; }
 
-
-
+.home-cont {
+  background: lightblue;
+  height: 100vh;
+  width: 100%;
+  text-align: center; }
+  .home-cont header {
+    background: blue;
+    height: 10vh;
+    width: 100%; }
+  .home-cont section {
+    background: maroon;
+    height: 90vh;
+    width: 70%;
+    display: flex;
+    margin: auto;
+    flex-direction: column;
+    justify-content: center; }
+    .home-cont section .home-login-cont {
+      background: purple; }
+    .home-cont section .login-input {
+      height: 100vh;
+      width: 70%; }
+    .home-cont section .home-register-cont {
+      background: lightgreen; }
+    .home-cont section button {
+      height: 10vh;
+      margin: auto;
+      width: 70%; }
 
