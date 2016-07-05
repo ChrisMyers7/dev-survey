@@ -54,11 +54,20 @@
       display: flex;
       flex-direction: column;
       justify-content: space-around; }
-      .admin-cont .survey-cont section div {
-        background: grey; }
-      .admin-cont .survey-cont section div:hover {
-        background: white;
-        cursor: pointer; }
+      .admin-cont .survey-cont section .admin-survey-display {
+        height: 7vh;
+        width: 80%;
+        margin: auto;
+        background: grey;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around; }
+        .admin-cont .survey-cont section .admin-survey-display div {
+          font-size: 1.5em;
+          margin: 1vh; }
+        .admin-cont .survey-cont section .admin-survey-display button {
+          height: 5vh;
+          margin: 1vh; }
   .admin-cont .admin-create-cont {
     background: yellow;
     height: 20vh;
@@ -74,7 +83,8 @@
         background: blue;
         height: 10vh;
         width: 80%;
-        text-align: center; }
+        text-align: center;
+        margin: 5vh; }
       .admin-cont .admin-create-cont section button:hover {
         cursor: pointer;
         background: green; }
@@ -141,3 +151,21 @@
       margin: auto;
       width: 70%; }
 
+.user-cont {
+  background: green;
+  height: 100vh;
+  width: 100%; }
+  .user-cont section {
+    background: yellow;
+    height: 100%;
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; }
+    .user-cont section div {
+      background: grey;
+      margin: auto;
+      width: 50%;
+      height: 30px;
+      text-align: center; }

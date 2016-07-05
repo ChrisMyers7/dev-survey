@@ -7,7 +7,7 @@
 
 <section class="user-modal" ng-if='hideModal'>
 
-  <div ng-repeat='user in users'>
+  <div ng-repeat='user in users track by $index'>
 
     <div>{{user.first_name}} {{user.last_name}}</div>
 
@@ -15,7 +15,7 @@
 
     <div>{{user.email}}</div>
 
-    <input type="checkbox">
+    <input type="checkbox" value='yes' ng-model='user.checked'>
 
   </div>
 
@@ -32,7 +32,15 @@
 
     <section class="display-survey-cont">
 
-      <div ng-repeat='survey in surveys' class="admin-survey-display" ng-click='displayModal()'>{{survey.survey_name}}</div>
+      <div ng-repeat='survey in surveys' class="admin-survey-display">
+
+        <div>{{survey.survey_name}}</div>
+
+        <button>Update Survey</button>
+
+        <button ng-click='displayModal(survey._id)'>Send to Users</button>
+
+      </div>
 
     </section>
 

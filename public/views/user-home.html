@@ -1,1 +1,20 @@
-{{test}}
+<section class="user-modal-background" ng-if='modalToggle' ng-click='takeSurvey()'></section>
+
+<section class="user-modal" ng-If='modalToggle'>
+
+  <div ng-repeat='question in yesOrNoQuestions'>{{question.question}}</div>
+  <div ng-repeat='question in multipleChoiceQuestions'>{{question.question}}</div>
+  <div ng-repeat='question in rankingQuestions'>{{question.question}}</div>
+  <div ng-repeat='question in textFieldQuestions'>{{question.textQuestion}}</div>
+
+</section>
+
+<section class="user-cont">
+
+  <section class="user-survey-cont">
+
+    <div ng-repeat='survey in surveys' ng-click='takeSurvey($index)'>{{survey.survey_name}}</div>
+
+  </section>
+
+</section>

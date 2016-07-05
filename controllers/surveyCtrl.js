@@ -11,7 +11,7 @@ module.exports = {
     })
   },
   show: function(req, res, next) {
-    SurveyModel.findById({_id: req.params.id}, function(err, surveys) {
+    SurveyModel.findById({_id: req.params.id}).populate('yesOrNo_questions').populate('multipleChoice_questions').populate('ranking_questions').populate('textField_questions').exec(function(err, surveys) {
       if (err) {
         res.status(500).json(err)
       } else {
@@ -29,8 +29,6 @@ module.exports = {
     })
   },
   update: function(req, res, next) {
-    // req.body.id = String(req.body.id)
-    console.log(req.body.id)
     if (req.query.type === 'yesorno') {
       SurveyModel.findByIdAndUpdate({_id: req.params.id}, {$push: {yesOrNo_questions: req.body.id}}, function(err, survey) {
         if (err) {

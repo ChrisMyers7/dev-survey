@@ -8,6 +8,13 @@ angular.module('dev-survey')
       })
     }
 
+    this.getOneSurvey = function(surveyId) {
+      return $http({
+        method: 'GET',
+        url: 'http://localhost:3000/api/surveys/' + surveyId
+      })
+    }
+
     this.addSurvey = function(surveyName, yesOrNo, multipleChoice, ranking, textField) {
         var deffered = $q.defer();
 

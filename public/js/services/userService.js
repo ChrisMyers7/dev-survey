@@ -16,4 +16,20 @@ angular.module('dev-survey')
       })
     }
 
+    this.sendSurvey = function(userIds, surveyId) {
+      console.log(userIds, surveyId);
+      return $http({
+        method: 'PUT',
+        url: 'http://localhost:3000/api/users?surveyid=' + surveyId,
+        data: userIds
+      })
+    }
+
+    this.getUserSurveys = function(userId) {
+      return $http({
+        method: 'GET',
+        url: 'http://localhost:3000/api/users/' + userId
+      })
+    }
+
   })

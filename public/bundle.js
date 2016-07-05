@@ -48,18 +48,7 @@ angular.module('dev-survey')
 angular.module('dev-survey')
   .controller('adminHomeCtrl', ["$scope", "surveyService", "userService", function($scope, surveyService, userService) {
 
-    $scope.hideModal = '';
-
-    $scope.users = [];
-
-    $scope.displayModal = function() {
-      $scope.hideModal = !$scope.hideModal;
-      if ($scope.hideModal) {
-        userService.getUsers().then(function(response) {
-          $scope.users = response.data;
-        })
-      }
-    }
+    $scope.surveyId = '';
 
     $scope.surveys = []
 
@@ -69,7 +58,38 @@ angular.module('dev-survey')
       })
     }
 
-    getSurveys()
+    getSurveys();
+
+    $scope.hideModal = '';
+
+    $scope.users = [];
+
+    $scope.displayModal = function(survey_id) {
+      $scope.hideModal = !$scope.hideModal;
+      if ($scope.hideModal) {
+        $scope.surveyId = survey_id;
+        userService.getUsers().then(function(response) {
+          $scope.users = response.data;
+          for (var i = 0; i < $scope.users.length; i++) {
+            $scope.users[i].checked = '';
+          }
+        })
+      }
+    }
+
+    $scope.sendSurvey = function() {
+      var userIds = [];
+      for (var i = 0; i < $scope.users.length; i++) {
+        if ($scope.users[i].checked === true) {
+          userIds.push($scope.users[i]._id);
+        }
+      }
+      userService.sendSurvey(userIds, $scope.surveyId).then(function(response) {
+        console.log(response.data);
+      })
+    }
+
+
 
   }])
 
@@ -206,9 +226,31 @@ angular.module('dev-survey')
   }])
 
 angular.module('dev-survey')
-  .controller('userHomeCtrl', ["$scope", function($scope) {
+  .controller('userHomeCtrl', ["$scope", "userService", "surveyService", function($scope, userService, surveyService) {
 
-    $scope.test = 'userHomeCtrl'
+    $scope.modalToggle = '';
+
+    function getUserSurveys() {
+      var id = '577a98e94e0f5cec3eddfcfe';
+      userService.getUserSurveys(id).then(function(response) {
+        $scope.surveys = response.data.surveys
+        console.log(response.data);
+      })
+    }
+
+    getUserSurveys()
+
+    $scope.takeSurvey = function(index) {
+      $scope.modalToggle = !$scope.modalToggle;
+      if ($scope.modalToggle) {
+        surveyService.getOneSurvey($scope.surveys[index]._id).then(function(response) {
+          $scope.yesOrNoQuestions = response.data.yesOrNo_questions;
+          $scope.multipleChoiceQuestions = response.data.multipleChoice_questions;
+          $scope.rankingQuestions = response.data.ranking_questions;
+          $scope.textFieldQuestions = response.data.textField_questions;
+        })
+      }
+    }
 
   }])
 
@@ -280,6 +322,13 @@ angular.module('dev-survey')
       return $http({
         method: 'GET',
         url: 'http://localhost:3000/api/surveys'
+      })
+    }
+
+    this.getOneSurvey = function(surveyId) {
+      return $http({
+        method: 'GET',
+        url: 'http://localhost:3000/api/surveys/' + surveyId
       })
     }
 
@@ -378,6 +427,22 @@ angular.module('dev-survey')
       return $http({
         method: 'GET',
         url: 'http://localhost:3000/api/users'
+      })
+    }
+
+    this.sendSurvey = function(userIds, surveyId) {
+      console.log(userIds, surveyId);
+      return $http({
+        method: 'PUT',
+        url: 'http://localhost:3000/api/users?surveyid=' + surveyId,
+        data: userIds
+      })
+    }
+
+    this.getUserSurveys = function(userId) {
+      return $http({
+        method: 'GET',
+        url: 'http://localhost:3000/api/users/' + userId
       })
     }
 

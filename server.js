@@ -3,6 +3,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
+mongoose.Promise = require('bluebird')
 
 // controllers
 const completedSurveyCtrl = require('./controllers/completedSurveyCtrl')
@@ -28,6 +29,7 @@ app.use(express.static(__dirname + '/public'))
 
 // users endpoints
 app.get('/api/users', userCtrl.index);
+app.get('/api/users/:id', userCtrl.show)
 app.post('/api/users', userCtrl.create);
 app.put('/api/users', userCtrl.update);
 
