@@ -19,9 +19,23 @@ angular.module('dev-survey')
       $scope.registerClick = !$scope.registerClick;
     }
 
-    // $scope.login() {
-    //
-    // }
+    $scope.login = function(email, password) {
+      var loginUser = {
+        email: email,
+        password: password
+      }
+      userService.loginUser(loginUser).then(function(response) {
+        var user = response.data;
+        console.log(user[0]);
+        if (user[0].password === loginUser.password) {
+          userService.currentUser = user[0];
+          $state.go('userHome')
+        } else {
+          prompt('Incorrect Password');
+        }
+
+      })
+    }
 
     $scope.saveUser = function(user) {
       userService.registerUser(user).then(function(response) {

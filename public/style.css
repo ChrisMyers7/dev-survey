@@ -122,33 +122,73 @@
     cursor: pointer; }
 
 .home-cont {
-  background: lightblue;
+  background: #292c2f;
   height: 100vh;
   width: 100%;
   text-align: center; }
   .home-cont header {
-    background: blue;
+    background: #fff;
     height: 10vh;
-    width: 100%; }
+    width: 100%;
+    padding-top: 3vh; }
+    .home-cont header div {
+      background: url("../../img/logowhiteblue.png") center no-repeat;
+      background-size: contain;
+      height: 6vh;
+      width: 20%; }
   .home-cont section {
-    background: maroon;
-    height: 90vh;
+    background: #292c2f;
+    height: 87vh;
     width: 70%;
     display: flex;
     margin: auto;
     flex-direction: column;
     justify-content: center; }
-    .home-cont section .home-login-cont {
-      background: purple; }
     .home-cont section .login-input {
-      height: 100vh;
-      width: 70%; }
-    .home-cont section .home-register-cont {
-      background: lightgreen; }
+      height: 50vh;
+      width: 70%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around; }
+      .home-cont section .login-input input {
+        height: 10vh;
+        width: 70%;
+        margin: auto;
+        border: none;
+        text-align: center;
+        font-family: "Source Sans Pro", sans-serif;
+        color: #a2a2a2;
+        font-size: 2em; }
+    .home-cont section .register-input {
+      height: 50vh;
+      width: 70%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around; }
+      .home-cont section .register-input input {
+        height: 5vh;
+        width: 70%;
+        margin: auto;
+        border: none;
+        text-align: center;
+        font-family: "Source Sans Pro", sans-serif;
+        color: #a2a2a2;
+        font-size: 2em; }
+      .home-cont section .register-input button {
+        height: 5vh;
+        font-size: 1.5em; }
     .home-cont section button {
-      height: 10vh;
+      height: 15vh;
       margin: auto;
-      width: 70%; }
+      width: 70%;
+      background: #57BDE8;
+      color: #fff;
+      font-size: 3em;
+      border: none;
+      font-family: "Source Sans Pro", sans-serif; }
+    .home-cont section button:hover {
+      opacity: 0.8;
+      cursor: pointer; }
 
 .yesorno-cont input {
   display: inline-block;

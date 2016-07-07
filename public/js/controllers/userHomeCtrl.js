@@ -4,7 +4,7 @@ angular.module('dev-survey')
     $scope.modalToggle = '';
 
     function getUserSurveys() {
-      var id = '577d2254d29d1c34157c1b13';
+      var id = userService.currentUser._id;
       userService.getUserSurveys(id).then(function(response) {
         $scope.surveys = response.data.surveys
       })

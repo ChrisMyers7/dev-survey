@@ -205,9 +205,23 @@ angular.module('dev-survey')
       $scope.registerClick = !$scope.registerClick;
     }
 
-    // $scope.login() {
-    //
-    // }
+    $scope.login = function(email, password) {
+      var loginUser = {
+        email: email,
+        password: password
+      }
+      userService.loginUser(loginUser).then(function(response) {
+        var user = response.data;
+        console.log(user[0]);
+        if (user[0].password === loginUser.password) {
+          userService.currentUser = user[0];
+          $state.go('userHome')
+        } else {
+          prompt('Incorrect Password');
+        }
+
+      })
+    }
 
     $scope.saveUser = function(user) {
       userService.registerUser(user).then(function(response) {
@@ -226,7 +240,7 @@ angular.module('dev-survey')
     $scope.modalToggle = '';
 
     function getUserSurveys() {
-      var id = '577d2254d29d1c34157c1b13';
+      var id = userService.currentUser._id;
       userService.getUserSurveys(id).then(function(response) {
         $scope.surveys = response.data.surveys
       })
@@ -247,30 +261,6 @@ angular.module('dev-survey')
     }
 
   }])
-
-angular.module('dev-survey')
-.directive('compileTemplate', ["$compile", "$parse", function($compile, $parse){
-    return {
-        link: function(scope, element, attr){
-            var parsed = $parse(attr.ngBindHtml);
-            function getStringValue() { return (parsed(scope) || '').toString(); }
-
-            //Recompile if the template changes
-            scope.$watch(getStringValue, function() {
-                $compile(element, null, -9999)(scope);  //The -9999 makes it skip directives so that we do not recompile ourselves
-            });
-        }
-    }
-}]);
-
-angular.module('dev-survey')
-  .directive('yesOrNoDirective', function() {
-    return {
-      restrict: 'E',
-      templateUrl: '../js/templates/yesOrNoTmpl.html'
-    }
-  })
-  
 
 angular.module('dev-survey')
   .service('questionService', ["$http", function($http) {
@@ -409,11 +399,21 @@ angular.module('dev-survey')
 angular.module('dev-survey')
   .service('userService', ["$http", function($http) {
 
+    this.currentUser = ''
+
     this.registerUser = function(user) {
       return $http({
         method: 'POST',
         url: 'http://localhost:3000/api/users',
         data: user
+      })
+    }
+
+    this.loginUser = function(loginUser) {
+      console.log(loginUser);
+      return $http({
+        method: 'GET',
+        url: 'http://localhost:3000/api/users/' + loginUser.email + "?password=" + loginUser.password
       })
     }
 
@@ -441,3 +441,27 @@ angular.module('dev-survey')
     }
 
   }])
+
+angular.module('dev-survey')
+.directive('compileTemplate', ["$compile", "$parse", function($compile, $parse){
+    return {
+        link: function(scope, element, attr){
+            var parsed = $parse(attr.ngBindHtml);
+            function getStringValue() { return (parsed(scope) || '').toString(); }
+
+            //Recompile if the template changes
+            scope.$watch(getStringValue, function() {
+                $compile(element, null, -9999)(scope);  //The -9999 makes it skip directives so that we do not recompile ourselves
+            });
+        }
+    }
+}]);
+
+angular.module('dev-survey')
+  .directive('yesOrNoDirective', function() {
+    return {
+      restrict: 'E',
+      templateUrl: '../js/templates/yesOrNoTmpl.html'
+    }
+  })
+  
