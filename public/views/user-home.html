@@ -2,10 +2,44 @@
 
 <section class="user-modal" ng-If='modalToggle'>
 
-  <div ng-repeat='question in yesOrNoQuestions'>{{question.question}}</div>
-  <div ng-repeat='question in multipleChoiceQuestions'>{{question.question}}</div>
-  <div ng-repeat='question in rankingQuestions'>{{question.question}}</div>
-  <div ng-repeat='question in textFieldQuestions'>{{question.textQuestion}}</div>
+  <div class="yesorno-cont"ng-repeat='question in yesOrNoQuestions'>
+
+    <div>{{question.question}}</div>
+    <input type="checkbox" placeholder="Yes">
+    <div class="yesorno-checkbox">Yes</div>
+    <input type="checkbox" placeholder="No">
+    <div class="yesorno-checkbox">No</div>
+
+  </div>
+
+  <div class="multiplechoice-cont" ng-repeat='question in multipleChoiceQuestions'>
+
+    <div>{{question.question}}</div>
+    <div>{{question.option1}}</div>
+    <div>{{question.option2}}</div>
+    <div>{{question.option3}}</div>
+    <div>{{question.option4}}</div>
+
+  </div>
+
+  <div class="ranking-cont" ng-repeat='question in rankingQuestions'>
+
+    <div>{{question.question}}</div>
+    <div>{{question.ranking1}}</div>
+    <div>{{question.ranking2}}</div>
+    <div>{{question.ranking3}}</div>
+    <div>{{question.ranking4}}</div>
+
+  </div>
+
+  <div class="textfield-cont" ng-repeat='question in textFieldQuestions'>
+
+    <div>{{question.textQuestion}}</div>
+    <input placeholder="Answer" type="text">
+
+  </div>
+
+  <button>Done</button>
 
 </section>
 

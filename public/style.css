@@ -3,7 +3,7 @@
   height: 100vh;
   width: 100vw;
   position: fixed;
-  background: rgba(102, 102, 102, 0.3); }
+  background: rgba(102, 102, 102, 0.8); }
 
 .user-modal {
   height: 80vh;
@@ -89,7 +89,6 @@
         cursor: pointer;
         background: green; }
 
-
 .navagation {
   display: inline-block; }
 
@@ -150,6 +149,16 @@
       height: 10vh;
       margin: auto;
       width: 70%; }
+
+.yesorno-cont input {
+  display: inline-block;
+  height: 15px;
+  width: 15px; }
+
+.yesorno-cont .yesorno-checkbox {
+  display: inline-block;
+  width: 20px;
+  height: 20px; }
 
 .user-cont {
   background: green;

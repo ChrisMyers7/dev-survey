@@ -1,3 +1,18 @@
+.yesorno-cont {
+
+    input {
+      display: inline-block;
+      height: 15px;
+      width: 15px;
+    }
+
+    .yesorno-checkbox {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+    }
+}
+
 .user-cont {
   background: green;
   height: 100vh;

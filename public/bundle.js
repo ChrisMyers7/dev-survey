@@ -94,13 +94,6 @@ angular.module('dev-survey')
   }])
 
 angular.module('dev-survey')
-  .controller('completeSurveyCtrl', ["$scope", function($scope) {
-
-    $scope.test = 'completeSurveyCtrl'
-
-  }])
-
-angular.module('dev-survey')
   .controller('createSurveyCtrl', ["$scope", "$sce", "questionService", "surveyService", function($scope, $sce, questionService, surveyService) {
 
     $scope.survey = [];
@@ -192,7 +185,7 @@ angular.module('dev-survey')
   }])
 
 angular.module('dev-survey')
-  .controller('homeCtrl', ["$scope", "userService", function($scope, userService) {
+  .controller('homeCtrl', ["$scope", "$state", "userService", function($scope, $state, userService) {
 
     $scope.loginClick = '';
 
@@ -220,6 +213,8 @@ angular.module('dev-survey')
       userService.registerUser(user).then(function(response) {
         console.log(response);
       })
+
+      $state.go('userHome')
     }
 
 
@@ -231,10 +226,9 @@ angular.module('dev-survey')
     $scope.modalToggle = '';
 
     function getUserSurveys() {
-      var id = '577a98e94e0f5cec3eddfcfe';
+      var id = '577d2254d29d1c34157c1b13';
       userService.getUserSurveys(id).then(function(response) {
         $scope.surveys = response.data.surveys
-        console.log(response.data);
       })
     }
 

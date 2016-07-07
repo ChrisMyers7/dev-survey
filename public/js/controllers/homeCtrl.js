@@ -1,5 +1,5 @@
 angular.module('dev-survey')
-  .controller('homeCtrl', function($scope, userService) {
+  .controller('homeCtrl', function($scope, $state, userService) {
 
     $scope.loginClick = '';
 
@@ -27,6 +27,8 @@ angular.module('dev-survey')
       userService.registerUser(user).then(function(response) {
         console.log(response);
       })
+
+      $state.go('userHome')
     }
 
 
