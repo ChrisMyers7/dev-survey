@@ -192,16 +192,10 @@ angular.module('dev-survey')
     $scope.registerClick = '';
 
     $scope.toggleLogin = function() {
-      if ($scope.registerClick) {
-        $scope.registerClick = '';
-      }
       $scope.loginClick = !$scope.loginClick;
     }
 
     $scope.toggleRegister = function() {
-      if ($scope.loginClick) {
-        $scope.loginClick = '';
-      }
       $scope.registerClick = !$scope.registerClick;
     }
 
@@ -261,6 +255,30 @@ angular.module('dev-survey')
     }
 
   }])
+
+angular.module('dev-survey')
+.directive('compileTemplate', ["$compile", "$parse", function($compile, $parse){
+    return {
+        link: function(scope, element, attr){
+            var parsed = $parse(attr.ngBindHtml);
+            function getStringValue() { return (parsed(scope) || '').toString(); }
+
+            //Recompile if the template changes
+            scope.$watch(getStringValue, function() {
+                $compile(element, null, -9999)(scope);  //The -9999 makes it skip directives so that we do not recompile ourselves
+            });
+        }
+    }
+}]);
+
+angular.module('dev-survey')
+  .directive('yesOrNoDirective', function() {
+    return {
+      restrict: 'E',
+      templateUrl: '../js/templates/yesOrNoTmpl.html'
+    }
+  })
+  
 
 angular.module('dev-survey')
   .service('questionService', ["$http", function($http) {
@@ -441,27 +459,3 @@ angular.module('dev-survey')
     }
 
   }])
-
-angular.module('dev-survey')
-.directive('compileTemplate', ["$compile", "$parse", function($compile, $parse){
-    return {
-        link: function(scope, element, attr){
-            var parsed = $parse(attr.ngBindHtml);
-            function getStringValue() { return (parsed(scope) || '').toString(); }
-
-            //Recompile if the template changes
-            scope.$watch(getStringValue, function() {
-                $compile(element, null, -9999)(scope);  //The -9999 makes it skip directives so that we do not recompile ourselves
-            });
-        }
-    }
-}]);
-
-angular.module('dev-survey')
-  .directive('yesOrNoDirective', function() {
-    return {
-      restrict: 'E',
-      templateUrl: '../js/templates/yesOrNoTmpl.html'
-    }
-  })
-  

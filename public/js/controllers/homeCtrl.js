@@ -6,16 +6,10 @@ angular.module('dev-survey')
     $scope.registerClick = '';
 
     $scope.toggleLogin = function() {
-      if ($scope.registerClick) {
-        $scope.registerClick = '';
-      }
       $scope.loginClick = !$scope.loginClick;
     }
 
     $scope.toggleRegister = function() {
-      if ($scope.loginClick) {
-        $scope.loginClick = '';
-      }
       $scope.registerClick = !$scope.registerClick;
     }
 

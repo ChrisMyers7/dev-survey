@@ -1,43 +1,101 @@
-<section class="home-cont">
+
+<!-- modal content -->
+<section class="home-modal-background" ng-if='loginClick' ng-click='toggleLogin()'></section>
+<section class="home-modal-background" ng-if='registerClick' ng-click='toggleRegister()'></section>
+<section class="login-input" ng-if='loginClick'>
+
+  <section class="sign-in-heading">
+    <h1>Sign In</h1>
+  </section>
+
+  <section class="sign-in-input">
+    <input class="user-input-fields" placeholder="Email" type="text" ng-model='email'>
+
+    <input class="user-input-fields" placeholder="Password" type="text" ng-model='password'>
+
+    <button ng-click='login(email, password)'>Login</button>
+  </section>
+
+  <section class="home-modal-signin-footer">
+    <div>Don't have an Account? <span>Create one Here<span></div>
+  </section>
+
+</section>
+
+<!-- register modal -->
+<section class='register-input' ng-if="registerClick">
+
+  <section class="register-heading">
+    <h1>Create an Account</h1>
+  </section>
+
+  <section class="register-input-fields">
+
+    <input placeholder="First Name" type="text" ng-model='user.first_name'>
+
+    <input placeholder="Last Name" type="text" ng-model='user.last_name'>
+
+    <input placeholder="Company Name" type="text" ng-model='user.company_name'>
+
+    <input placeholder="Email" type="text" ng-model='user.email'>
+
+    <input placeholder="Password" type="text" ng-model='user.password'>
+
+    <button ng-click='saveUser(user)'>Register as User</button>
+
+  </section>
+
+  <section class="home-modal-register-footer">
+    <div>Already have an Account? <span>Login Here<span></div>
+  </section>
+
+
+</section>
+
+
+<!-- general content -->
+<section class="home-cont" >
 
   <header>
 
-    <div></div>
+    <div ui-sref='home'></div>
 
   </header>
 
   <section class="login-register-cont">
 
-    <button class="home-login-cont" ng-click='toggleLogin()'>Login</button>
+    <section class='app-info'>
+      <div class="app-name">
+        Survey Center
+      </div>
+    </section>
 
-    <section class="login-input" ng-if='loginClick'>
+    <section class="login-register-buttons">
+      <button class="home-login-cont" ng-click='toggleLogin()'>Login</button>
 
-      <input class="user-input-fields" placeholder="Email" type="text" ng-model='email'>
+      <button class="home-register-cont" ng-click='toggleRegister()'>Register</button>
+    </section>
 
-      <input class="user-input-fields" placeholder="Password" type="text" ng-model='password'>
+  </section>
 
-      <button ng-click='login(email, password)'>Login</button>
+  <section class="footer-cont">
+    <section class="footer-img-cont">
+
+      <div class="footer-img"></div>
 
     </section>
 
-    <button class="home-register-cont" ng-click='toggleRegister()'>Register</button>
+    <section class="social-media-cont">
 
-    <section class='register-input' ng-if="registerClick">
-
-      <input class="user-input-fields" placeholder="First Name" type="text" ng-model='user.first_name'>
-
-      <input class="user-input-fields" placeholder="Last Name" type="text" ng-model='user.last_name'>
-
-      <input class="user-input-fields" placeholder="Company Name" type="text" ng-model='user.company_name'>
-
-      <input class="user-input-fields" placeholder="Email" type="text" ng-model='user.email'>
-
-      <input class="user-input-fields" placeholder="Password" type="text" ng-model='user.password'>
-
-      <button ng-click='saveUser(user)'>Register as User</button>
+      <div class="social-media">
+        <div class="facebook"></div>
+        <div class="twitter"></div>
+        <div class="linked-in"></div>
+        <div class="instagram"></div>
+        <div class="quora"></div>
+      </div>
 
     </section>
-
   </section>
 
 </section>

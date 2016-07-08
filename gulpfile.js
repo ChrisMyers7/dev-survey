@@ -7,7 +7,6 @@ var annotate = require('gulp-ng-annotate')
 var watch = require('gulp-watch')
 
 
-
 // here are the gulp file paths
 var paths = {
   jsSource: ['./public/js/**/*.js'],

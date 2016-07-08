@@ -121,9 +121,138 @@
   .survey-format button:hover {
     cursor: pointer; }
 
+.home-modal-background {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  background: rgba(102, 102, 102, 0.8); }
+
+.login-input {
+  height: 60vh;
+  width: 35%;
+  position: fixed;
+  z-index: 100;
+  left: 32.5%;
+  top: 20vh;
+  background: #fff;
+  border-radius: 10px;
+  font-family: "Source Sans Pro", sans-serif; }
+  .login-input .sign-in-heading {
+    height: 20%;
+    width: 100%;
+    text-align: center;
+    padding-top: 10vh; }
+    .login-input .sign-in-heading h1 {
+      height: 50%;
+      width: 100%;
+      font-size: 2em;
+      color: #57BDE8;
+      text-align: center; }
+  .login-input .sign-in-input {
+    height: 40%;
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around; }
+    .login-input .sign-in-input input {
+      height: 10%;
+      width: 100%;
+      margin: auto;
+      border-color: #57BDE8;
+      text-align: center;
+      border-radius: 10px;
+      font-size: 1em; }
+    .login-input .sign-in-input button {
+      background: #57BDE8;
+      color: #fff;
+      height: 20%;
+      width: 40%;
+      border-radius: 10px;
+      margin: auto;
+      font-size: 1.5em;
+      border: none;
+      font-family: "Source Sans Pro", sans-serif; }
+    .login-input .sign-in-input button:hover {
+      cursor: pointer;
+      opacity: .8; }
+  .login-input .home-modal-signin-footer {
+    height: 40%;
+    width: 100%;
+    text-align: center; }
+    .login-input .home-modal-signin-footer div {
+      margin-top: 6vh; }
+      .login-input .home-modal-signin-footer div span {
+        color: #57BDE8; }
+      .login-input .home-modal-signin-footer div span:hover {
+        text-decoration: underline;
+        cursor: pointer; }
+
+.register-input {
+  height: 60vh;
+  width: 35%;
+  position: fixed;
+  z-index: 100;
+  left: 32.5%;
+  top: 15vh;
+  background: #fff;
+  border-radius: 10px;
+  font-family: "Source Sans Pro", sans-serif; }
+  .register-input .register-heading {
+    height: 10%;
+    width: 100%;
+    text-align: center;
+    padding-top: 5vh; }
+    .register-input .register-heading h1 {
+      height: 50%;
+      width: 100%;
+      font-size: 2em;
+      color: #57BDE8;
+      text-align: center; }
+  .register-input .register-input-fields {
+    height: 65%;
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-top: 3vh; }
+    .register-input .register-input-fields input {
+      height: 10%;
+      width: 100%;
+      margin: auto;
+      border-color: #57BDE8;
+      text-align: center;
+      border-radius: 10px;
+      font-size: 1em; }
+    .register-input .register-input-fields button {
+      background: #57BDE8;
+      color: #fff;
+      height: 20%;
+      width: 65%;
+      border-radius: 10px;
+      margin: auto;
+      font-size: 1.5em;
+      border: none;
+      font-family: "Source Sans Pro", sans-serif; }
+    .register-input .register-input-fields button:hover {
+      cursor: pointer;
+      opacity: .8; }
+  .register-input .home-modal-register-footer {
+    height: 40%;
+    width: 100%;
+    text-align: center; }
+    .register-input .home-modal-register-footer div {
+      margin-top: 6vh; }
+      .register-input .home-modal-register-footer div span {
+        color: #57BDE8; }
+      .register-input .home-modal-register-footer div span:hover {
+        text-decoration: underline;
+        cursor: pointer; }
+
 .home-cont {
   background: #292c2f;
-  height: 100vh;
+  height: 120vh;
   width: 100%;
   text-align: center; }
   .home-cont header {
@@ -136,59 +265,79 @@
       background-size: contain;
       height: 6vh;
       width: 20%; }
-  .home-cont section {
-    background: #292c2f;
+  .home-cont .login-register-cont {
+    background: url("../../img/mountain-min.jpg") bottom no-repeat;
+    background-size: cover;
     height: 87vh;
-    width: 70%;
+    width: 100%;
     display: flex;
     margin: auto;
     flex-direction: column;
     justify-content: center; }
-    .home-cont section .login-input {
-      height: 50vh;
-      width: 70%;
+    .home-cont .login-register-cont .app-info {
+      height: 57vh;
+      width: 100%;
       display: flex;
       flex-direction: column;
-      justify-content: space-around; }
-      .home-cont section .login-input input {
+      justify-content: center; }
+      .home-cont .login-register-cont .app-info .app-name {
+        height: 20vh;
+        width: 100%;
+        text-align: center;
+        color: #fff;
+        font-family: "Source Sans Pro", sans-serif;
+        font-size: 5em; }
+    .home-cont .login-register-cont .login-register-buttons {
+      height: 30vh;
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      background: rgba(166, 166, 166, 0.2); }
+      .home-cont .login-register-cont .login-register-buttons button {
+        height: 15vh;
+        margin: auto;
+        width: 37%;
+        background: #57BDE8;
+        color: #fff;
+        font-size: 3em;
+        border: none;
+        font-family: "Source Sans Pro", sans-serif; }
+      .home-cont .login-register-cont .login-register-buttons button:hover {
+        opacity: 0.8;
+        cursor: pointer; }
+  .home-cont .footer-cont {
+    height: 20vh;
+    width: 100%;
+    background: #292c2f;
+    display: flex;
+    flex-direction: row; }
+    .home-cont .footer-cont .footer-img-cont {
+      width: 50%;
+      height: 100%; }
+      .home-cont .footer-cont .footer-img-cont div {
+        width: 50%;
+        height: 100%;
+        margin: auto;
+        background: url("../../img/logo_whiteletters.png") no-repeat center;
+        background-size: contain; }
+    .home-cont .footer-cont .social-media-cont {
+      height: 20vh;
+      width: 50%; }
+      .home-cont .footer-cont .social-media-cont .social-media {
+        margin: auto;
         height: 10vh;
-        width: 70%;
-        margin: auto;
-        border: none;
-        text-align: center;
-        font-family: "Source Sans Pro", sans-serif;
-        color: #a2a2a2;
-        font-size: 2em; }
-    .home-cont section .register-input {
-      height: 50vh;
-      width: 70%;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-around; }
-      .home-cont section .register-input input {
-        height: 5vh;
-        width: 70%;
-        margin: auto;
-        border: none;
-        text-align: center;
-        font-family: "Source Sans Pro", sans-serif;
-        color: #a2a2a2;
-        font-size: 2em; }
-      .home-cont section .register-input button {
-        height: 5vh;
-        font-size: 1.5em; }
-    .home-cont section button {
-      height: 15vh;
-      margin: auto;
-      width: 70%;
-      background: #57BDE8;
-      color: #fff;
-      font-size: 3em;
-      border: none;
-      font-family: "Source Sans Pro", sans-serif; }
-    .home-cont section button:hover {
-      opacity: 0.8;
-      cursor: pointer; }
+        width: 50%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        margin-top: 5vh; }
+        .home-cont .footer-cont .social-media-cont .social-media div {
+          height: 35px;
+          width: 35px;
+          background: #33383b;
+          margin-top: 2vh; }
+        .home-cont .footer-cont .social-media-cont .social-media div:hover {
+          cursor: pointer; }
 
 .yesorno-cont input {
   display: inline-block;
