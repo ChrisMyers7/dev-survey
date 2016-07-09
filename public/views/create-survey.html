@@ -1,22 +1,61 @@
-<section class="survey-questions">
+<section class="create-survey-cont">
 
-  <input type="text" placeholder="Survey Name" ng-model='surveyName'>
+  <!-- header/navbar section -->
+  <header class="create-survey-header">
 
-  <div ng-repeat='question in survey'>
+    <div class="logo-div" ui-sref='home'></div>
 
-    <div ng-bind-html="question.template" compile-template></div>
+  </header>
 
-  </div>
+  <!-- mid content section -->
+  <section class="create-survey">
 
-  <button ng-click='savedSurvey()'>Save Survey</button>
+    <section class="create-survey-heading">Create a New Survey</section>
 
-</section>
+    <section class="create-survey-display">
 
-<section class="survey-format">
+      <section class="create-survey-input">
 
-  <button ng-click='yesOrNo()'>Yes or No</button>
-  <button ng-click='multipleChoice()'>Multiple Choice</button>
-  <button ng-click='ranking()'>Ranking</button>
-  <button ng-click='textField()'>Text Field</button>
+        <section class="create-survey-input-display" ng-repeat='question in survey'>
+
+          <div ng-bind-html='question.template' compile-template></div>
+
+        </section>
+
+      </section>
+
+      <section class="create-survey-buttons">
+
+        <button class="input-buttons" ng-click='yesOrNo()'>Yes or No</button>
+        <button class="input-buttons" ng-click='multipleChoice()'>Multiple Choice</button>
+        <button class="input-buttons" ng-click='ranking()'>Ranking</button>
+        <button class="input-buttons" ng-click='textField()'>Text Field</button>
+
+      </section>
+
+    </section>
+
+  </section>
+
+  <!-- footer section -->
+  <section class="footer-cont">
+    <section class="footer-img-cont">
+
+      <div class="footer-img"></div>
+
+    </section>
+
+    <section class="social-media-cont">
+
+      <div class="social-media">
+        <div class="facebook"></div>
+        <div class="twitter"></div>
+        <div class="linked-in"></div>
+        <div class="instagram"></div>
+        <div class="quora"></div>
+      </div>
+
+    </section>
+  </section>
 
 </section>

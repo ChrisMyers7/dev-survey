@@ -1,6 +1,7 @@
 angular.module('dev-survey')
   .controller('homeCtrl', function($scope, $state, userService) {
 
+        // these toggle the login and register modals
     $scope.loginClick = '';
 
     $scope.registerClick = '';
@@ -13,6 +14,7 @@ angular.module('dev-survey')
       $scope.registerClick = !$scope.registerClick;
     }
 
+    // login function including api call and staging user
     $scope.login = function(email, password) {
       var loginUser = {
         email: email,
@@ -31,12 +33,15 @@ angular.module('dev-survey')
       })
     }
 
+    // saving the user in the data base and sending them to the appropriate page
     $scope.saveUser = function(user) {
       userService.registerUser(user).then(function(response) {
         console.log(response);
+
+        $state.go('userHome')
       })
 
-      $state.go('userHome')
+
     }
 
 

@@ -5,55 +5,101 @@
 
 </section>
 
-<section class="user-modal" ng-if='hideModal'>
+<section class="modal-user" ng-if='hideModal'>
 
-  <div ng-repeat='user in users track by $index'>
+<section class="modal-user-header">
+  <div class="modal-user-header-text">Users</div>
+</section>
 
-    <div>{{user.first_name}} {{user.last_name}}</div>
+  <section class="modal-user-cont">
 
-    <div>{{user.company_name}}</div>
+    <div class="modal-user-base-info">
 
-    <div>{{user.email}}</div>
+      <div class="modal-user-name">Name</div>
 
-    <input type="checkbox" value='yes' ng-model='user.checked'>
+      <div class="modal-user-company">Company</div>
 
+      <div class="modal-user-email">Email</div>
+
+    </div>
+
+    <div class="modal-user-cont-info"ng-repeat='user in users track by $index'>
+
+      <input type="checkbox" value='yes' ng-model='user.checked'>
+
+      <div>{{user.first_name}} {{user.last_name}}</div>
+
+      <div>{{user.company_name}}</div>
+
+      <div>{{user.email}}</div>
+
+    </div>
+
+</section>
+
+  <div class="send-survey-cont">
+    <button ng-click='sendSurvey()'>Send Survey</button>
   </div>
-
-  <button ng-click='sendSurvey()'>Send Survey</button>
 
 </section>
 
 <!-- Content that is immediatly seen with all the surveys-->
 <section class="admin-cont">
 
-  <header class="admin-nav-cont"></header>
+  <header class="admin-header">
+
+    <div ui-sref='home'></div>
+
+  </header>
 
   <section class="survey-cont">
 
-    <section class="display-survey-cont">
+    <div class="admin-survey-header">Surveys</div>
 
-      <div ng-repeat='survey in surveys' class="admin-survey-display">
+    <section class="admin-survey-cont">
 
-        <div>{{survey.survey_name}}</div>
+      <section class="display-survey-cont">
 
-        <button>Update Survey</button>
+        <div ng-repeat='survey in surveys' class="admin-survey-display">
 
-        <button ng-click='displayModal(survey._id)'>Send to Users</button>
+          <div>{{survey.survey_name}}</div>
 
-      </div>
+          <button>Update Survey</button>
+
+          <button ng-click='displayModal(survey._id)'>Send to Users</button>
+
+        </div>
+
+      </section>
+
+    </section>
+
+    <section class="create-admin-cont">
+
+      <button class="create-survey" ui-sref='createSurvey'>Create New Survey</button>
 
     </section>
 
   </section>
 
-  <section class="admin-create-cont">
+  <section class="footer-cont">
+    <section class="footer-img-cont">
 
-    <section>
-
-      <button class="create-survey" ui-sref='createSurvey'>Create Survey</button>
+      <div class="footer-img"></div>
 
     </section>
 
+    <section class="social-media-cont">
+
+      <div class="social-media">
+        <div class="facebook"></div>
+        <div class="twitter"></div>
+        <div class="linked-in"></div>
+        <div class="instagram"></div>
+        <div class="quora"></div>
+      </div>
+
+    </section>
   </section>
 
 </section>

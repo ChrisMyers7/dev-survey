@@ -118,16 +118,18 @@ angular.module('dev-survey')
 
     $scope.yesOrNo = function() {
       $scope.survey.push({
-        template: $sce.trustAsHtml('<input ng-model="yesOrNoQuestion.question" placeholder="question">' +
-                                    '<input ng-model="yesOrNoQuestion.requireAnswer" placeholder="Require an Answer">' +
-                                    '<button ng-click="save(yesOrNoQuestion)">save</button>'
+        template: $sce.trustAsHtml( '<div class="question-type">Yes/No</div>' +
+                                    '<input class="yesorno-question" ng-model="yesOrNoQuestion.question" placeholder="question">' +
+                                    '<input class="yesorno-answer-require"ng-model="yesOrNoQuestion.requireAnswer" placeholder="Require an Answer">' +
+                                    '<button ng-click="save(yesOrNoQuestion)">Save</button>'
                                   )
       })
     }
 
     $scope.multipleChoice = function() {
         $scope.survey.push({
-          template: $sce.trustAsHtml('<input placeholder="question" ng-model="multipleChoiceQuestion.question">' +
+          template: $sce.trustAsHtml( '<div class="question-type">Multiple Choice</div>' +
+                                      '<input placeholder="question" ng-model="multipleChoiceQuestion.question">' +
                                       '<input type="text" placeholder="Require Answer?" ng-model="multipleChoiceQuestion.requireAnswer">' +
                                       '<input type="text" placeholder="Option 1" ng-model="multipleChoiceQuestion.option1">' +
                                       '<input type="text" placeholder="Option 2" ng-model="multipleChoiceQuestion.option2">' +
@@ -140,7 +142,8 @@ angular.module('dev-survey')
 
     $scope.ranking = function() {
         $scope.survey.push({
-          template: $sce.trustAsHtml('<input placeholder="question" ng-model="rankingQuestion.question">' +
+          template: $sce.trustAsHtml( '<div class="question-type">Ranking</div>' +
+                                      '<input placeholder="question" ng-model="rankingQuestion.question">' +
                                       '<input type="text" placeholder="Require Answer?" ng-model="rankingQuestion.requireAnswer">' +
                                       '<input type="text" placeholder="Rank 1" ng-model="rankingQuestion.ranking1">' +
                                       '<input type="text" placeholder="Rank 2" ng-model="rankingQuestion.ranking2">' +
@@ -153,7 +156,8 @@ angular.module('dev-survey')
 
     $scope.textField = function() {
         $scope.survey.push({
-          template: $sce.trustAsHtml('<input placeholder="question" ng-model="textFieldQuestion.textQuestion">' +
+          template: $sce.trustAsHtml( '<div class="question-type">Text Field</div>' +
+                                      '<input placeholder="question" ng-model="textFieldQuestion.textQuestion">' +
                                       '<input type="text" placeholder="Require Answer?" ng-model="textFieldQuestion.requireAnswer">' +
                                       '<button ng-click="save(textFieldQuestion)">save</button>'
                                     )
@@ -187,6 +191,7 @@ angular.module('dev-survey')
 angular.module('dev-survey')
   .controller('homeCtrl', ["$scope", "$state", "userService", function($scope, $state, userService) {
 
+        // these toggle the login and register modals
     $scope.loginClick = '';
 
     $scope.registerClick = '';
@@ -199,6 +204,7 @@ angular.module('dev-survey')
       $scope.registerClick = !$scope.registerClick;
     }
 
+    // login function including api call and staging user
     $scope.login = function(email, password) {
       var loginUser = {
         email: email,
@@ -217,12 +223,15 @@ angular.module('dev-survey')
       })
     }
 
+    // saving the user in the data base and sending them to the appropriate page
     $scope.saveUser = function(user) {
       userService.registerUser(user).then(function(response) {
         console.log(response);
+
+        $state.go('userHome')
       })
 
-      $state.go('userHome')
+
     }
 
 
@@ -272,13 +281,12 @@ angular.module('dev-survey')
 }]);
 
 angular.module('dev-survey')
-  .directive('yesOrNoDirective', function() {
+  .directive('devMountainHeader', function() {
     return {
       restrict: 'E',
-      templateUrl: '../js/templates/yesOrNoTmpl.html'
+      templateUrl: '../js/templates/headerTmpl.html'
     }
   })
-  
 
 angular.module('dev-survey')
   .service('questionService', ["$http", function($http) {

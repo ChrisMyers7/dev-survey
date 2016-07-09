@@ -1,3 +1,13 @@
+$dev-blue: #57BDE8;
+$devm-background: #292c2f;
+$white-background: #fff;
+$diff-blue: #2AABE2;
+$font-color: #a2a2a2;
+// social media
+$sm-background: #33383b;
+$font-stack1: 'Source Sans Pro', sans-serif;
+
+
 .user-modal-background {
   height: 100vh;
   width: 100vw;
@@ -5,7 +15,7 @@
   background: rgba(102, 102, 102, 0.8);
 }
 
-.user-modal {
+.modal-user {
   height: 80vh;
   width: 50%;
   top: 10vh;
@@ -13,107 +23,278 @@
   background: white;
   position: fixed;
   z-index: 200;
-  opacity: .99;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
   text-align: center;
+  border-radius: 10px;
 
-    div {
-      background: purple;
-      width: 75%;
-      margin: auto;
+    .modal-user-header {
+      height: 10vh;
+      width: 100%;
+      text-align: center;
+      position: relative;
 
-        div {
-          color: blue;
-          height: 15px;
-          width: 75%;
-          margin: auto;
+        .modal-user-header-text {
+          color: $dev-blue;
+          font-family: $font-stack1;
+          font-size: 3em;
+          position: absolute;
+          top: 2.5vh;
+          width: 100%;
+          text-align: center;
         }
     }
 
-      button {
-        margin-bottom: 5%;
-        width: 50%;
-        height: 30px;
-        margin: auto;
-      }
-}
-
-.admin-cont {
-  background: blue;
-  height: 100vh;
-  width: 100%;
-    header {
-      background: red;
-      height: 10vh;
+    .modal-user-cont {
+      background: $white-background;
       width: 100%;
+      height: 60vh;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      overflow: hidden;
+      border-radius: 10px;
+
+        .modal-user-base-info {
+          background: $font-color;
+          color: $devm-background;
+          height: 5vh;
+          width: 90%;
+          text-align: left;
+          padding-top: 1.5vh;
+          margin: 2.5vh 0vh;
+          font-family: $font-stack1;
+          font-weight: bold;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: space-around;
+          border-radius: 10px;
+        }
+
+        .modal-user-cont-info {
+          background: $font-color;
+          color: $devm-background;
+          height: 5vh;
+          width: 90%;
+          text-align: center;
+          padding-top: 1.5vh;
+          margin: 2.5vh 0vh;
+          font-family: $font-stack1;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+          justify-content: space-around;
+          border-radius: 10px;
+          position: relative;
+
+            input {
+              color: $dev-blue;
+              position: absolute;
+              top: 1.75vh;
+              left: 5px;
+            }
+        }
     }
 
+    .modal-user-cont:hover {
+      overflow: scroll;
+    }
+
+    .send-survey-cont {
+      height: 10vh;
+      width: 100%;
+
+        button {
+          margin-bottom: 5%;
+          width: 50%;
+          height: 5vh;
+          background: $dev-blue;
+          margin: auto;
+          border-radius: 10px;
+          border: none;
+
+        }
+
+        button:hover {
+          cursor: pointer;
+          background: $diff-blue;
+        }
+    }
+}
+// whole page container
+.admin-cont {
+  // background: blue;
+  height: 100vh;
+  width: 100%;
+
+    .admin-header {
+      background: $devm-background;
+      height: 10vh;
+      width: 100%;
+      padding-top: 3vh;
+
+        div {
+          background: url('../../img/logo_whiteletters.png') center no-repeat;
+          background-size: contain;
+          height: 6vh;
+          width: 20%;
+          margin-left: 5%;
+        }
+    }
+// survey display that have already been created
       .survey-cont {
-        background: pink;
-        height: 70vh;
+        background: $white-background;
+        height: 115vh;
         width: 100%;
         text-align: center;
 
-          section {
-            background: violet;
-            height: 70vh;
+        .admin-survey-header {
+          height: 10vh;
+          padding-top: 5vh;
+          width: 100%;
+          text-align: center;
+          top: 2vh;
+          color: $dev-blue;
+          font-size: 3em;
+          font-family: $font-stack1;
+          font-weight: bold;
+        }
+
+          .admin-survey-cont {
+            height: 80vh;
             width: 70%;
+            overflow: hidden;
             margin: auto;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
+            background: rgba(100, 100, 100, 0.0);
 
-              .admin-survey-display {
-                height: 7vh;
-                width: 80%;
+            .display-survey-cont {
+              height: 60vh;
+              width: 100%;
+              margin: auto;
+              display: flex;
+              flex-direction: row;
+              flex-wrap: wrap;
+              justify-content: space-around;
+              position: relative;
+
+                .admin-survey-display {
+                  height: 22vh;
+                  width: 30%;
+                  margin: auto;
+                  margin-top: 2.5vh;
+                  margin-bottom: 2.5vh;
+                  background: $font-color;
+                  color: $devm-background;
+                  font-family: $font-stack1;
+                  font-weight: bold;
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: space-around;
+                  border-radius: 10px;
+
+                      div {
+                        font-size: 1.5em;
+                        margin: 1vh;
+                      }
+
+                      button {
+                        height: 5vh;
+                        width: 50%;
+                        margin: auto;;
+                        color: $devm-background;
+                        font-family: $font-stack1;
+                        background: $dev-blue;
+                        border-radius: 7px;
+                        border: none;
+                      }
+
+                      button:hover {
+                        background: $diff-blue;
+                        cursor: pointer;
+                      }
+                }
+            }
+        }
+
+        .admin-survey-cont:hover {
+          overflow: scroll;
+        }
+
+        .create-admin-cont {
+          background: transparent;
+          height: 10vh;
+          width: 100%;
+          text-align: center;
+          margin: auto;
+          margin-top: 3vh;
+          margin-bottom: 3vh;
+
+            button {
+              background: $dev-blue;
+              height: 10vh;
+              width: 40%;
+              text-align: center;
+              margin: auto;
+              font-family: $font-stack1;
+              font-size: 2em;
+              color: $white-background;
+              border-radius: 10px;
+              border: none;
+            }
+
+            button:hover {
+              cursor: pointer;
+              background: $diff-blue;
+            }
+        }
+    }
+// here is the footer that is displayed on every page
+      .footer-cont {
+        height: 20vh;
+        width: 100%;
+        background: $devm-background;
+        display: flex;
+        flex-direction: row;
+
+          .footer-img-cont {
+            width: 50%;
+            height: 100%;
+
+              div {
+                width: 50%;
+                height: 100%;
                 margin: auto;
-                background: grey;
-                display: flex;
-                flex-direction: row;
-                justify-content: space-around;
-
-                    div {
-                      font-size: 1.5em;
-                      margin: 1vh;
-                    }
-
-                    button {
-                      height: 5vh;
-                      margin: 1vh;
-                    }
+                background: url('../../img/logo_whiteletters.png') no-repeat center;
+                background-size: contain;
               }
           }
 
-    }
+          .social-media-cont {
+            height: 20vh;
+            width: 50%;
+            // padding-top: 5vh;
 
-      .admin-create-cont {
-        background: yellow;
-        height: 20vh;
-        width: 100%;
-        text-align: center;
+              .social-media {
+                margin: auto;
+                height: 10vh;
+                width: 50%;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                margin-top: 5vh;
 
-            section {
-              background: purple;
-              height: 20vh;
-              width: 70%;
-              text-align: center;
-              margin: auto;
+                  div {
+                    height: 35px;
+                    width: 35px;
+                    background: $sm-background;
+                    margin-top: 2vh;
+                  }
 
-                button {
-                  background: blue;
-                  height: 10vh;
-                  width: 80%;
-                  text-align: center;
-                  margin: 5vh;
-                }
-
-                button:hover {
-                  cursor: pointer;
-                  background: green;
-                }
-            }
+                  div:hover {
+                    cursor: pointer;
+                  }
+              }
+          }
       }
 
 }
