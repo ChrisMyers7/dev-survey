@@ -1,54 +1,179 @@
 <section class="user-modal-background" ng-if='modalToggle' ng-click='takeSurvey()'></section>
 
-<section class="user-modal" ng-If='modalToggle'>
+<section class="user-modal-cont" ng-If='modalToggle'>
 
-  <div class="yesorno-cont"ng-repeat='question in yesOrNoQuestions'>
+  <!-- Yes/no Q's -->
 
-    <div>{{question.question}}</div>
-    <input type="checkbox" placeholder="Yes">
-    <div class="yesorno-checkbox">Yes</div>
-    <input type="checkbox" placeholder="No">
-    <div class="yesorno-checkbox">No</div>
+  <div class="yesorno-type">Yes/No Questions:</div>
+
+  <div class="yesorno-cont" ng-repeat='question in yesOrNoQuestions'>
+
+    <div class="yesorno-question">{{question.question}}</div>
+
+    <div class="yes-cont">
+
+      <input type="checkbox" placeholder="Yes">
+      <div class="yesorno-checkbox">Yes</div>
+
+    </div>
+
+    <div class="no-cont">
+
+      <input type="checkbox" placeholder="No">
+      <div class="yesorno-checkbox">No</div>
+
+    </div>
 
   </div>
 
-  <div class="multiplechoice-cont" ng-repeat='question in multipleChoiceQuestions'>
+  <!-- here are the multiple choice Q's -->
 
-    <div>{{question.question}}</div>
-    <div>{{question.option1}}</div>
-    <div>{{question.option2}}</div>
-    <div>{{question.option3}}</div>
-    <div>{{question.option4}}</div>
+  <div class="multiple-choice-type">Multiple Choice Questions:</div>
+
+  <div class="multiple-choice-cont" ng-repeat='question in multipleChoiceQuestions'>
+
+    <div class="multiple-choice-question">{{question.question}}</div>
+
+    <div class="option1-cont">
+
+      <input class="multiple-choice-checkbox" type="checkbox">
+      <div class="multiple-choice-checkbox">{{question.option1}}</div>
+
+    </div>
+
+    <div class="option2-cont">
+
+      <input class="multiple-choice-checkbox" type="checkbox">
+      <div class="multiple-choice-checkbox">{{question.option2}}</div>
+
+    </div>
+
+    <div class="option3-cont">
+
+      <input class="multiple-choice-checkbox" type="checkbox">
+      <div class="multiple-choice-checkbox">{{question.option3}}</div>
+
+    </div>
+
+    <div class="option4-cont">
+
+      <input class="multiple-choice-checkbox" type="checkbox">
+      <div class="multiple-choice-checkbox">{{question.option4}}</div>
+
+    </div>
+
 
   </div>
+
+  <div class="ranking-type">Ranking Questions:</div>
 
   <div class="ranking-cont" ng-repeat='question in rankingQuestions'>
 
-    <div>{{question.question}}</div>
-    <div>{{question.ranking1}}</div>
-    <div>{{question.ranking2}}</div>
-    <div>{{question.ranking3}}</div>
-    <div>{{question.ranking4}}</div>
+    <div class="ranking-question">{{question.question}}</div>
+
+    <div class="ranking1-cont">
+
+      <input class="ranking-checkbox" type="checkbox">
+      <div class="ranking-checkbox">{{question.ranking1}}</div>
+
+    </div>
+
+    <div class="ranking2-cont">
+
+      <input class="ranking-checkbox" type="checkbox">
+      <div class="ranking-checkbox">{{question.ranking2}}</div>
+
+    </div>
+
+    <div class="ranking3-cont">
+
+      <input class="ranking-checkbox" type="checkbox">
+      <div class="ranking-checkbox">{{question.ranking3}}</div>
+
+    </div>
+
+    <div class="ranking4-cont">
+
+      <input class="ranking-checkbox" type="checkbox">
+      <div class="ranking-checkbox">{{question.ranking4}}</div>
+
+    </div>
+
 
   </div>
 
-  <div class="textfield-cont" ng-repeat='question in textFieldQuestions'>
+  <!-- text field questions -->
 
-    <div>{{question.textQuestion}}</div>
-    <input placeholder="Answer" type="text">
+  <div class="text-field-type">Text Field Questions:</div>
+
+  <div class="text-field-cont" ng-repeat='question in textFieldQuestions'>
+
+    <div class="text-field-question">{{question.textQuestion}}</div>
+
+    <input class="text-field-input" placeholder="Answer" type="text">
 
   </div>
 
-  <button>Done</button>
+  <div class="submit-survey-cont">
+    <button class="submit-survey">Submit Survey</button>
+  </div>
 
 </section>
 
-<section class="user-cont">
+<!-- main user content -->
 
-  <section class="user-survey-cont">
+<section class="user-home-cont">
 
-    <div ng-repeat='survey in surveys' ng-click='takeSurvey($index)'>{{survey.survey_name}}</div>
+  <header class="user-home-header">
+
+    <div class="user-home-logo" ui-sref='home'></div>
+
+  </header>
+
+  <section class="user-home-cont-surveys">
+
+    <section class="user-home-surveys-header">
+
+      <h1 class="user-home-cont-surveys-header">New Surveys from DevMountain</h1>
+
+    </section>
+
+    <section class="user-home-incomplete-surveys">
+
+      <section class="user-home-survey-display-cont">
+
+        <div class='user-home-survey-display' ng-repeat='survey in surveys' ng-click='takeSurvey($index)'>
+
+          <div>{{survey.survey_name}}</div>
+
+        </div>
+
+      </section>
+
+    </section>
 
   </section>
 
+  <section class="footer-cont">
+    <section class="footer-img-cont">
+
+      <div class="footer-img"></div>
+
+    </section>
+
+    <section class="social-media-cont">
+
+      <div class="social-media">
+        <div class="facebook"></div>
+        <div class="twitter"></div>
+        <div class="linked-in"></div>
+        <div class="instagram"></div>
+        <div class="quora"></div>
+      </div>
+
+    </section>
+  </section>
+
 </section>
+
+    <!-- <div ng-repeat='survey in surveys' ng-click='takeSurvey($index)'>{{survey.survey_name}}</div> -->
