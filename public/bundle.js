@@ -118,48 +118,50 @@ angular.module('dev-survey')
 
     $scope.yesOrNo = function() {
       $scope.survey.push({
-        template: $sce.trustAsHtml( '<div class="question-type">Yes/No</div>' +
-                                    '<input class="yesorno-question" ng-model="yesOrNoQuestion.question" placeholder="question">' +
-                                    '<input class="yesorno-answer-require"ng-model="yesOrNoQuestion.requireAnswer" placeholder="Require an Answer">' +
-                                    '<button ng-click="save(yesOrNoQuestion)">Save</button>'
+        template: $sce.trustAsHtml( '<div class="question-type yesorno-individual">Yes/No:</div>' +
+                                    '<div class="question-wrapper"><input class="yesorno-question" ng-model="yesOrNoQuestion.question" placeholder="What question would you like to ask?"></div>' +
+                                    // '<div class="answer-require-wrapper">Would you like to require this answer?<input class="answer-require" type="checkbox" ng-model="yesOrNoQuestion.requireAnswer" ></div>' +
+                                    '<div class="save-button-wrapper"><button ng-click="save(yesOrNoQuestion)">Save</button></div>'
                                   )
       })
     }
 
     $scope.multipleChoice = function() {
         $scope.survey.push({
-          template: $sce.trustAsHtml( '<div class="question-type">Multiple Choice</div>' +
-                                      '<input placeholder="question" ng-model="multipleChoiceQuestion.question">' +
-                                      '<input type="text" placeholder="Require Answer?" ng-model="multipleChoiceQuestion.requireAnswer">' +
-                                      '<input type="text" placeholder="Option 1" ng-model="multipleChoiceQuestion.option1">' +
-                                      '<input type="text" placeholder="Option 2" ng-model="multipleChoiceQuestion.option2">' +
-                                      '<input type="text" placeholder="Option 3" ng-model="multipleChoiceQuestion.option3">' +
-                                      '<input type="text" placeholder="Option 4" ng-model="multipleChoiceQuestion.option4">' +
-                                      '<button ng-click="save(multipleChoiceQuestion)">save</button>'
+          template: $sce.trustAsHtml( '<div class="question-type">Multiple Choice:</div>' +
+                                      '<div class="question-wrapper"><input class="multipleChoice-question" ng-model="multipleChoiceQuestion.question" placeholder="What question would you like to ask?"></div>' +
+                                      // '<input type="text" placeholder="Require Answer?" ng-model="multipleChoiceQuestion.requireAnswer">' +
+                                      '<div class="option-header">Options:</div>' +
+                                      '<div class="option-wrapper"><input type="text" placeholder="Option 1" ng-model="multipleChoiceQuestion.option1">' +
+                                      '<input type="text" placeholder="Option 2" ng-model="multipleChoiceQuestion.option2"></div>' +
+                                      '<div class="option-wrapper"><input type="text" placeholder="Option 3" ng-model="multipleChoiceQuestion.option3">' +
+                                      '<input type="text" placeholder="Option 4" ng-model="multipleChoiceQuestion.option4"></div>' +
+                                      '<div class="save-button-wrapper"><button ng-click="save(multipleChoiceQuestion)">Save</button></div>'
                                     )
         })
     }
 
     $scope.ranking = function() {
         $scope.survey.push({
-          template: $sce.trustAsHtml( '<div class="question-type">Ranking</div>' +
-                                      '<input placeholder="question" ng-model="rankingQuestion.question">' +
-                                      '<input type="text" placeholder="Require Answer?" ng-model="rankingQuestion.requireAnswer">' +
-                                      '<input type="text" placeholder="Rank 1" ng-model="rankingQuestion.ranking1">' +
-                                      '<input type="text" placeholder="Rank 2" ng-model="rankingQuestion.ranking2">' +
-                                      '<input type="text" placeholder="Rank 3" ng-model="rankingQuestion.ranking3">' +
-                                      '<input type="text" placeholder="Rank 4" ng-model="rankingQuestion.ranking4">' +
-                                      '<button ng-click="save(rankingQuestion)">save</button>'
+          template: $sce.trustAsHtml( '<div class="question-type">Ranking:</div>' +
+                                      '<div class="question-wrapper"><input placeholder="What question would you like to ask?" ng-model="rankingQuestion.question"></div>' +
+                                      // '<input type="text" placeholder="Require Answer?" ng-model="rankingQuestion.requireAnswer">' +
+                                      '<div class="option-header">Rankings:</div>' +
+                                      '<div class="option-wrapper"><input type="text" placeholder="Rank 1" ng-model="rankingQuestion.ranking1">' +
+                                      '<input type="text" placeholder="Rank 2" ng-model="rankingQuestion.ranking2"></div>' +
+                                      '<div class="option-wrapper"><input type="text" placeholder="Rank 3" ng-model="rankingQuestion.ranking3">' +
+                                      '<input type="text" placeholder="Rank 4" ng-model="rankingQuestion.ranking4"></div>' +
+                                      '<div class="save-button-wrapper"><button ng-click="save(rankingQuestion)">Save</button></div>'
                                     )
         })
     }
 
     $scope.textField = function() {
         $scope.survey.push({
-          template: $sce.trustAsHtml( '<div class="question-type">Text Field</div>' +
-                                      '<input placeholder="question" ng-model="textFieldQuestion.textQuestion">' +
-                                      '<input type="text" placeholder="Require Answer?" ng-model="textFieldQuestion.requireAnswer">' +
-                                      '<button ng-click="save(textFieldQuestion)">save</button>'
+          template: $sce.trustAsHtml( '<div class="question-type yesorno-individual">Text Field:</div>' +
+                                      '<div class="question-wrapper"><input placeholder="What question would you like to ask?" ng-model="textFieldQuestion.textQuestion"></div>' +
+                                      // '<input type="text" placeholder="Require Answer?" ng-model="textFieldQuestion.requireAnswer">' +
+                                      '<div class="save-button-wrapper"><button ng-click="save(rankingQuestion)">Save</button></div>'
                                     )
         })
     }

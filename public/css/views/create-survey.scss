@@ -54,18 +54,117 @@ $font-stack1: 'Source Sans Pro', sans-serif;
               // background: red;
               overflow: hidden;
 
+              // template styling here
+
                 .create-survey-input-display {
-                  height: 30vh;
+                  height: 35vh;
                   width: 90%;
                   background: $font-color;
                   margin: auto;
                   margin-top: 3vh;
                   margin-bottom: 3vh;
-
+                  border-radius: 10px;
+                  display: flex;
+                  flex-direction: column;
+                  justify-content: space-between;
 
                 }
 
-                // template styling goes here
+                .question-type {
+                  width: 95%;
+                  // text-align: center;
+                  margin: auto;
+                  height: 7vh;
+                  color: $devm-background;
+                  font-size: 2em;
+                  font-family: $font-stack1;
+                }
+
+                .yesorno-individual {
+                  margin-top: 7vh;
+                }
+
+                .question-wrapper {
+                  width: 90%;
+                  height: 7vh;
+                  margin: auto;
+
+                    input {
+                      width: 100%;
+                      height: 3vh;
+                      border-radius: 10px;
+                      border: solid $dev-blue 3px;
+                      font-size: 1em;
+                      font-family: $font-stack1;
+                      color: $devm-background;
+                    }
+
+                }
+
+                // .answer-require-wrapper {
+                //   width: 90%;
+                //   height: 7vh;
+                //   margin: auto;
+                //
+                //     input {
+                //       width: 20px;
+                //       height: 20px;
+                //     }
+                // }
+
+                .save-button-wrapper {
+                  width: 10%;
+                  height: 5vh;
+                  margin: auto;
+
+                    button {
+                      width: 100%;
+                      height: 5vh;
+                      background: $dev-blue;
+                      font-family: $font-stack1;
+                      color: $devm-background;
+                      border: none;
+                      border-radius: 6px;
+                      font-family: $font-stack1;
+                    }
+
+                    button:hover {
+                      background: $diff-blue;
+                      cursor: pointer;
+                    }
+                }
+
+                // option styles
+
+                .option-header {
+                  width: 90%;
+                  // text-align: center;
+                  margin: auto;
+                  height: 5vh;
+                  color: $devm-background;
+                  font-size: 1.5em;
+                  font-family: $font-stack1;
+                }
+
+                .option-wrapper {
+                  width: 90%;
+                  height: 5vh;
+                  margin: auto;
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: space-around;
+
+                    input {
+                      width: 45%;
+                      height: 3vh;
+                      border-radius: 10px;
+                      border: solid $dev-blue 3px;
+                      font-size: 1em;
+                      font-family: $font-stack1;
+                      color: $devm-background;
+                    }
+                }
+
             }
             .create-survey-input:hover {
               overflow: auto;
@@ -84,6 +183,7 @@ $font-stack1: 'Source Sans Pro', sans-serif;
               flex-wrap: wrap;
               justify-content: space-around;
               background: $font-color;
+              border-radius: 10px;
 
                 .input-buttons {
                   background: $dev-blue;
