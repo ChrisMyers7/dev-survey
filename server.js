@@ -16,7 +16,7 @@ const textFieldCtrl = require('./controllers/textFieldCtrl')
 
 // initialization of express app and mongoose
 const app = express();
-mongoose.connect('mongodb://localhost/dev-survey');
+mongoose.connect('mongodb://104.131.80.131/dev-survey');
 
 // enabaling cross origin requests
 const corsOptions = {
