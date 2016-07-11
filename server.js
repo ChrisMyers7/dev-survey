@@ -20,7 +20,7 @@ mongoose.connect('mongodb://localhost/dev-survey');
 
 // enabaling cross origin requests
 const corsOptions = {
-  origin: 'http://localhost:3000'
+  origin: 'http://localhost:80'
 }
 
 app.use(bodyParser.json());
