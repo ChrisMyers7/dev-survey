@@ -216,9 +216,14 @@ angular.module('dev-survey')
       }
       userService.loginUser(loginUser).then(function(response) {
         var user = response.data;
+
         if (user[0].password === loginUser.password) {
           userService.currentUser = user[0];
-          $state.go('userHome')
+          if (loginUser.email === 'mega@tron.com') {
+            $state.go('adminHome')
+          } else {
+            $state.go('userHome')
+          }
         } else {
           prompt('Incorrect Password');
         }
@@ -230,6 +235,7 @@ angular.module('dev-survey')
     $scope.saveUser = function(user) {
       userService.registerUser(user).then(function(response) {
         $state.go('userHome')
+        userService.currentUser = response.data._id;
       })
 
 
