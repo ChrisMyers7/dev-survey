@@ -4,14 +4,14 @@ angular.module('dev-survey')
     this.getSurveys = function() {
       return $http({
         method: 'GET',
-        url: 'http://localhost:80/api/surveys'
+        url: 'http://104.131.80.131:80/api/surveys'
       })
     }
 
     this.getOneSurvey = function(surveyId) {
       return $http({
         method: 'GET',
-        url: 'http://localhost:80/api/surveys/' + surveyId
+        url: 'http://104.131.80.131:80/api/surveys/' + surveyId
       })
     }
 
@@ -26,7 +26,7 @@ angular.module('dev-survey')
 
         $http({
         method: 'POST',
-        url: 'http://localhost:80/api/surveys',
+        url: 'http://104.131.80.131:80/api/surveys',
         data: name
       }).then(function(response) {
           objectId = response.data._id;
@@ -37,7 +37,7 @@ angular.module('dev-survey')
               }
               $http({
                 method: 'PUT',
-                url: 'http://localhost:80/api/surveys/' + objectId + '?type=yesorno',
+                url: 'http://104.131.80.131:80/api/surveys/' + objectId + '?type=yesorno',
                 data: body
               }).then(function(response) {
                 console.log(response.data);
@@ -51,7 +51,7 @@ angular.module('dev-survey')
               }
               $http({
                 method: 'PUT',
-                url: 'http://localhost:80/api/surveys/' + objectId + '?type=multiplechoice',
+                url: 'http://104.131.80.131:80/api/surveys/' + objectId + '?type=multiplechoice',
                 data: body
               }).then(function(response) {
 
@@ -65,7 +65,7 @@ angular.module('dev-survey')
               }
               $http({
                 method: 'PUT',
-                url: 'http://localhost:80/api/surveys/' + objectId + '?type=ranking',
+                url: 'http://104.131.80.131:80/api/surveys/' + objectId + '?type=ranking',
                 data: body
               }).then(function(response) {
 
@@ -79,7 +79,7 @@ angular.module('dev-survey')
               }
               $http({
                 method: 'PUT',
-                url: 'http://localhost:80/api/surveys/' + objectId + '?type=textfield',
+                url: 'http://104.131.80.131:80/api/surveys/' + objectId + '?type=textfield',
                 data: body
               }).then(function(response) {
 
