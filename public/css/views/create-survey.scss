@@ -39,6 +39,7 @@ $font-stack1: 'Source Sans Pro', sans-serif;
           margin-top: 5vh;
           font-weight: bold;
           text-align: center;
+          font-family: $font-stack1;
         }
 
         .create-survey-display {
@@ -55,6 +56,47 @@ $font-stack1: 'Source Sans Pro', sans-serif;
               overflow: hidden;
 
               // template styling here
+                .survey-name-cont {
+                  width: 60%;
+                  height: 5vh;
+                  margin: auto;
+                  font-size: 1em;
+                  font-family: $font-stack1;
+                  color: $devm-background;
+
+                    input {
+                      width: 50%;
+                      height: 3vh;
+                      border-radius: 10px;
+                      border: solid $dev-blue 3px;
+                      text-align: center;
+                      font-size: 1em;
+                      font-family: $font-stack1;
+                      color: $devm-background;
+                    }
+                }
+
+                .save-survey-button-cont {
+                  width: 100%;
+                  height: 5vh;
+
+                    button {
+                      width: 15%;
+                      margin-right: 42.5%;
+                      height: 5vh;
+                      background: $dev-blue;
+                      font-family: $font-stack1;
+                      color: $devm-background;
+                      border: none;
+                      border-radius: 6px;
+                      font-family: $font-stack1;
+                    }
+
+                    button:hover {
+                      background: $diff-blue;
+                      cursor: pointer;
+                    }
+                }
 
                 .create-survey-input-display {
                   height: 35vh;
@@ -246,6 +288,26 @@ $font-stack1: 'Source Sans Pro', sans-serif;
 
                 div:hover {
                   cursor: pointer;
+                }
+
+                .facebook {
+                  background: url('../../img/icons/facebook.png') center no-repeat;
+                  background-size: cover;
+                }
+
+                .twitter {
+                  background: url('../../img/icons/twitter.svg') center no-repeat;
+                  background-size: cover;
+                }
+
+                .instagram {
+                  background: url('../../img/icons/instagram.svg') center no-repeat;
+                  background-size: cover;
+                }
+
+                .linked-in {
+                  background: url('../../img/icons/linkedin.svg') center no-repeat;
+                  background-size: cover;
                 }
             }
         }

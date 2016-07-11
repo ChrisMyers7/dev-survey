@@ -60,7 +60,7 @@ app.post('/api/rankingQuestions', rankingCtrl.create)
 app.get('/api/textFieldQuestions', textFieldCtrl.index);
 app.post('/api/textFieldQuestions', textFieldCtrl.create)
 
-const port = 3000
+const port = 80;
 app.listen(port, function() {
   console.log('Hey!! Listening... port: ' + port)
 })

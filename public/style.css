@@ -220,6 +220,18 @@
           margin-top: 2vh; }
         .admin-cont .footer-cont .social-media-cont .social-media div:hover {
           cursor: pointer; }
+        .admin-cont .footer-cont .social-media-cont .social-media .facebook {
+          background: url("../../img/icons/facebook.png") center no-repeat;
+          background-size: cover; }
+        .admin-cont .footer-cont .social-media-cont .social-media .twitter {
+          background: url("../../img/icons/twitter.svg") center no-repeat;
+          background-size: cover; }
+        .admin-cont .footer-cont .social-media-cont .social-media .instagram {
+          background: url("../../img/icons/instagram.svg") center no-repeat;
+          background-size: cover; }
+        .admin-cont .footer-cont .social-media-cont .social-media .linked-in {
+          background: url("../../img/icons/linkedin.svg") center no-repeat;
+          background-size: cover; }
 
 .create-survey-cont {
   height: 150vh;
@@ -244,7 +256,8 @@
       font-size: 3em;
       margin-top: 5vh;
       font-weight: bold;
-      text-align: center; }
+      text-align: center;
+      font-family: "Source Sans Pro", sans-serif; }
     .create-survey-cont .create-survey .create-survey-display {
       width: 80%;
       height: 100vh;
@@ -255,6 +268,38 @@
         height: 100vh;
         width: 70%;
         overflow: hidden; }
+        .create-survey-cont .create-survey .create-survey-display .create-survey-input .survey-name-cont {
+          width: 60%;
+          height: 5vh;
+          margin: auto;
+          font-size: 1em;
+          font-family: "Source Sans Pro", sans-serif;
+          color: #292c2f; }
+          .create-survey-cont .create-survey .create-survey-display .create-survey-input .survey-name-cont input {
+            width: 50%;
+            height: 3vh;
+            border-radius: 10px;
+            border: solid #57BDE8 3px;
+            text-align: center;
+            font-size: 1em;
+            font-family: "Source Sans Pro", sans-serif;
+            color: #292c2f; }
+        .create-survey-cont .create-survey .create-survey-display .create-survey-input .save-survey-button-cont {
+          width: 100%;
+          height: 5vh; }
+          .create-survey-cont .create-survey .create-survey-display .create-survey-input .save-survey-button-cont button {
+            width: 15%;
+            margin-right: 42.5%;
+            height: 5vh;
+            background: #57BDE8;
+            font-family: "Source Sans Pro", sans-serif;
+            color: #292c2f;
+            border: none;
+            border-radius: 6px;
+            font-family: "Source Sans Pro", sans-serif; }
+          .create-survey-cont .create-survey .create-survey-display .create-survey-input .save-survey-button-cont button:hover {
+            background: #2AABE2;
+            cursor: pointer; }
         .create-survey-cont .create-survey .create-survey-display .create-survey-input .create-survey-input-display {
           height: 35vh;
           width: 90%;
@@ -384,6 +429,18 @@
           margin-top: 2vh; }
         .create-survey-cont .footer-cont .social-media-cont .social-media div:hover {
           cursor: pointer; }
+        .create-survey-cont .footer-cont .social-media-cont .social-media .facebook {
+          background: url("../../img/icons/facebook.png") center no-repeat;
+          background-size: cover; }
+        .create-survey-cont .footer-cont .social-media-cont .social-media .twitter {
+          background: url("../../img/icons/twitter.svg") center no-repeat;
+          background-size: cover; }
+        .create-survey-cont .footer-cont .social-media-cont .social-media .instagram {
+          background: url("../../img/icons/instagram.svg") center no-repeat;
+          background-size: cover; }
+        .create-survey-cont .footer-cont .social-media-cont .social-media .linked-in {
+          background: url("../../img/icons/linkedin.svg") center no-repeat;
+          background-size: cover; }
 
 .home-modal-background {
   height: 100vh;
@@ -605,6 +662,18 @@
           margin-top: 2vh; }
         .home-cont .footer-cont .social-media-cont .social-media div:hover {
           cursor: pointer; }
+        .home-cont .footer-cont .social-media-cont .social-media .facebook {
+          background: url("../../img/icons/facebook.png") center no-repeat;
+          background-size: cover; }
+        .home-cont .footer-cont .social-media-cont .social-media .twitter {
+          background: url("../../img/icons/twitter.svg") center no-repeat;
+          background-size: cover; }
+        .home-cont .footer-cont .social-media-cont .social-media .instagram {
+          background: url("../../img/icons/instagram.svg") center no-repeat;
+          background-size: cover; }
+        .home-cont .footer-cont .social-media-cont .social-media .linked-in {
+          background: url("../../img/icons/linkedin.svg") center no-repeat;
+          background-size: cover; }
 
 .user-modal-background {
   height: 100vh;
@@ -906,3 +975,15 @@
           margin-top: 2vh; }
         .user-home-cont .footer-cont .social-media-cont .social-media div:hover {
           cursor: pointer; }
+        .user-home-cont .footer-cont .social-media-cont .social-media .facebook {
+          background: url("../../img/icons/facebook.png") center no-repeat;
+          background-size: cover; }
+        .user-home-cont .footer-cont .social-media-cont .social-media .twitter {
+          background: url("../../img/icons/twitter.svg") center no-repeat;
+          background-size: cover; }
+        .user-home-cont .footer-cont .social-media-cont .social-media .instagram {
+          background: url("../../img/icons/instagram.svg") center no-repeat;
+          background-size: cover; }
+        .user-home-cont .footer-cont .social-media-cont .social-media .linked-in {
+          background: url("../../img/icons/linkedin.svg") center no-repeat;
+          background-size: cover; }

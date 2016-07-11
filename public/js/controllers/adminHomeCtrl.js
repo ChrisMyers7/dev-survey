@@ -1,5 +1,5 @@
 angular.module('dev-survey')
-  .controller('adminHomeCtrl', function($scope, surveyService, userService) {
+  .controller('adminHomeCtrl', function($scope, $state, surveyService, userService) {
 
     $scope.surveyId = '';
 
@@ -38,8 +38,9 @@ angular.module('dev-survey')
         }
       }
       userService.sendSurvey(userIds, $scope.surveyId).then(function(response) {
-        console.log(response.data);
+        
       })
+      $state.go('adminHome');
     }
 
 

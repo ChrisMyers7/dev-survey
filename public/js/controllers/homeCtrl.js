@@ -22,7 +22,6 @@ angular.module('dev-survey')
       }
       userService.loginUser(loginUser).then(function(response) {
         var user = response.data;
-        console.log(user[0]);
         if (user[0].password === loginUser.password) {
           userService.currentUser = user[0];
           $state.go('userHome')
@@ -36,8 +35,6 @@ angular.module('dev-survey')
     // saving the user in the data base and sending them to the appropriate page
     $scope.saveUser = function(user) {
       userService.registerUser(user).then(function(response) {
-        console.log(response);
-
         $state.go('userHome')
       })
 

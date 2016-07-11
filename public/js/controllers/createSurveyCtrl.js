@@ -1,5 +1,5 @@
 angular.module('dev-survey')
-  .controller('createSurveyCtrl', function($scope, $sce, questionService, surveyService) {
+  .controller('createSurveyCtrl', function($scope, $sce, $state, questionService, surveyService) {
 
     $scope.survey = [];
 
@@ -12,7 +12,8 @@ angular.module('dev-survey')
     $scope.textField_questions = [];
 
     $scope.savedSurvey = function() {
-      surveyService.addSurvey($scope.surveyName, $scope.yesOrNo_questions, $scope.multipleChoice_questions, $scope.ranking_questions, $scope.textField_questions)
+      surveyService.addSurvey($scope.surveyName, $scope.yesOrNo_questions, $scope.multipleChoice_questions, $scope.ranking_questions, $scope.textField_questions);
+      $state.go('adminHome');
     }
 
     $scope.saveSurvey = function() {
@@ -26,7 +27,7 @@ angular.module('dev-survey')
         template: $sce.trustAsHtml( '<div class="question-type yesorno-individual">Yes/No:</div>' +
                                     '<div class="question-wrapper"><input class="yesorno-question" ng-model="yesOrNoQuestion.question" placeholder="What question would you like to ask?"></div>' +
                                     // '<div class="answer-require-wrapper">Would you like to require this answer?<input class="answer-require" type="checkbox" ng-model="yesOrNoQuestion.requireAnswer" ></div>' +
-                                    '<div class="save-button-wrapper"><button ng-click="save(yesOrNoQuestion)">Save</button></div>'
+                                    '<div class="save-button-wrapper"><button ng-click="save(yesOrNoQuestion, $index)">Save</button></div>'
                                   )
       })
     }
@@ -41,7 +42,7 @@ angular.module('dev-survey')
                                       '<input type="text" placeholder="Option 2" ng-model="multipleChoiceQuestion.option2"></div>' +
                                       '<div class="option-wrapper"><input type="text" placeholder="Option 3" ng-model="multipleChoiceQuestion.option3">' +
                                       '<input type="text" placeholder="Option 4" ng-model="multipleChoiceQuestion.option4"></div>' +
-                                      '<div class="save-button-wrapper"><button ng-click="save(multipleChoiceQuestion)">Save</button></div>'
+                                      '<div class="save-button-wrapper"><button ng-click="save(multipleChoiceQuestion, $index)">Save</button></div>'
                                     )
         })
     }
@@ -56,7 +57,7 @@ angular.module('dev-survey')
                                       '<input type="text" placeholder="Rank 2" ng-model="rankingQuestion.ranking2"></div>' +
                                       '<div class="option-wrapper"><input type="text" placeholder="Rank 3" ng-model="rankingQuestion.ranking3">' +
                                       '<input type="text" placeholder="Rank 4" ng-model="rankingQuestion.ranking4"></div>' +
-                                      '<div class="save-button-wrapper"><button ng-click="save(rankingQuestion)">Save</button></div>'
+                                      '<div class="save-button-wrapper"><button ng-click="save(rankingQuestion, $index)">Save</button></div>'
                                     )
         })
     }
@@ -66,12 +67,12 @@ angular.module('dev-survey')
           template: $sce.trustAsHtml( '<div class="question-type yesorno-individual">Text Field:</div>' +
                                       '<div class="question-wrapper"><input placeholder="What question would you like to ask?" ng-model="textFieldQuestion.textQuestion"></div>' +
                                       // '<input type="text" placeholder="Require Answer?" ng-model="textFieldQuestion.requireAnswer">' +
-                                      '<div class="save-button-wrapper"><button ng-click="save(rankingQuestion)">Save</button></div>'
+                                      '<div class="save-button-wrapper"><button ng-click="save(textFieldQuestion, $index)">Save</button></div>'
                                     )
         })
     }
 
-    $scope.save = function(question) {
+    $scope.save = function(question, e) {
       if (question.option1) {
         questionService.multipleChoice(question).then(function(response) {
           $scope.multipleChoice_questions.push(response.data._id);
@@ -90,7 +91,7 @@ angular.module('dev-survey')
           $scope.yesOrNo_questions.push(response.data._id);
         })
       }
-
+      $scope.survey.splice(e, 1)
     }
 
   })

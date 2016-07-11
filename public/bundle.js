@@ -46,7 +46,7 @@ angular.module('dev-survey')
   }])
 
 angular.module('dev-survey')
-  .controller('adminHomeCtrl', ["$scope", "surveyService", "userService", function($scope, surveyService, userService) {
+  .controller('adminHomeCtrl', ["$scope", "$state", "surveyService", "userService", function($scope, $state, surveyService, userService) {
 
     $scope.surveyId = '';
 
@@ -85,8 +85,9 @@ angular.module('dev-survey')
         }
       }
       userService.sendSurvey(userIds, $scope.surveyId).then(function(response) {
-        console.log(response.data);
+        
       })
+      $state.go('adminHome');
     }
 
 
@@ -94,7 +95,7 @@ angular.module('dev-survey')
   }])
 
 angular.module('dev-survey')
-  .controller('createSurveyCtrl', ["$scope", "$sce", "questionService", "surveyService", function($scope, $sce, questionService, surveyService) {
+  .controller('createSurveyCtrl', ["$scope", "$sce", "$state", "questionService", "surveyService", function($scope, $sce, $state, questionService, surveyService) {
 
     $scope.survey = [];
 
@@ -107,7 +108,8 @@ angular.module('dev-survey')
     $scope.textField_questions = [];
 
     $scope.savedSurvey = function() {
-      surveyService.addSurvey($scope.surveyName, $scope.yesOrNo_questions, $scope.multipleChoice_questions, $scope.ranking_questions, $scope.textField_questions)
+      surveyService.addSurvey($scope.surveyName, $scope.yesOrNo_questions, $scope.multipleChoice_questions, $scope.ranking_questions, $scope.textField_questions);
+      $state.go('adminHome');
     }
 
     $scope.saveSurvey = function() {
@@ -121,7 +123,7 @@ angular.module('dev-survey')
         template: $sce.trustAsHtml( '<div class="question-type yesorno-individual">Yes/No:</div>' +
                                     '<div class="question-wrapper"><input class="yesorno-question" ng-model="yesOrNoQuestion.question" placeholder="What question would you like to ask?"></div>' +
                                     // '<div class="answer-require-wrapper">Would you like to require this answer?<input class="answer-require" type="checkbox" ng-model="yesOrNoQuestion.requireAnswer" ></div>' +
-                                    '<div class="save-button-wrapper"><button ng-click="save(yesOrNoQuestion)">Save</button></div>'
+                                    '<div class="save-button-wrapper"><button ng-click="save(yesOrNoQuestion, $index)">Save</button></div>'
                                   )
       })
     }
@@ -136,7 +138,7 @@ angular.module('dev-survey')
                                       '<input type="text" placeholder="Option 2" ng-model="multipleChoiceQuestion.option2"></div>' +
                                       '<div class="option-wrapper"><input type="text" placeholder="Option 3" ng-model="multipleChoiceQuestion.option3">' +
                                       '<input type="text" placeholder="Option 4" ng-model="multipleChoiceQuestion.option4"></div>' +
-                                      '<div class="save-button-wrapper"><button ng-click="save(multipleChoiceQuestion)">Save</button></div>'
+                                      '<div class="save-button-wrapper"><button ng-click="save(multipleChoiceQuestion, $index)">Save</button></div>'
                                     )
         })
     }
@@ -151,7 +153,7 @@ angular.module('dev-survey')
                                       '<input type="text" placeholder="Rank 2" ng-model="rankingQuestion.ranking2"></div>' +
                                       '<div class="option-wrapper"><input type="text" placeholder="Rank 3" ng-model="rankingQuestion.ranking3">' +
                                       '<input type="text" placeholder="Rank 4" ng-model="rankingQuestion.ranking4"></div>' +
-                                      '<div class="save-button-wrapper"><button ng-click="save(rankingQuestion)">Save</button></div>'
+                                      '<div class="save-button-wrapper"><button ng-click="save(rankingQuestion, $index)">Save</button></div>'
                                     )
         })
     }
@@ -161,12 +163,12 @@ angular.module('dev-survey')
           template: $sce.trustAsHtml( '<div class="question-type yesorno-individual">Text Field:</div>' +
                                       '<div class="question-wrapper"><input placeholder="What question would you like to ask?" ng-model="textFieldQuestion.textQuestion"></div>' +
                                       // '<input type="text" placeholder="Require Answer?" ng-model="textFieldQuestion.requireAnswer">' +
-                                      '<div class="save-button-wrapper"><button ng-click="save(rankingQuestion)">Save</button></div>'
+                                      '<div class="save-button-wrapper"><button ng-click="save(textFieldQuestion, $index)">Save</button></div>'
                                     )
         })
     }
 
-    $scope.save = function(question) {
+    $scope.save = function(question, e) {
       if (question.option1) {
         questionService.multipleChoice(question).then(function(response) {
           $scope.multipleChoice_questions.push(response.data._id);
@@ -185,7 +187,7 @@ angular.module('dev-survey')
           $scope.yesOrNo_questions.push(response.data._id);
         })
       }
-
+      $scope.survey.splice(e, 1)
     }
 
   }])
@@ -214,7 +216,6 @@ angular.module('dev-survey')
       }
       userService.loginUser(loginUser).then(function(response) {
         var user = response.data;
-        console.log(user[0]);
         if (user[0].password === loginUser.password) {
           userService.currentUser = user[0];
           $state.go('userHome')
@@ -228,8 +229,6 @@ angular.module('dev-survey')
     // saving the user in the data base and sending them to the appropriate page
     $scope.saveUser = function(user) {
       userService.registerUser(user).then(function(response) {
-        console.log(response);
-
         $state.go('userHome')
       })
 
@@ -245,8 +244,7 @@ angular.module('dev-survey')
     $scope.modalToggle = '';
 
     function getUserSurveys() {
-      // var id = userService.currentUser._id;
-      var id = "577d2254d29d1c34157c1b13";
+      var id = userService.currentUser._id;
       userService.getUserSurveys(id).then(function(response) {
         $scope.surveys = response.data.surveys
       })
@@ -297,7 +295,7 @@ angular.module('dev-survey')
     this.yesOrNo = function(question) {
       return $http({
         method: 'POST',
-        url: 'http://localhost:3000/api/yesOrNoQuestions',
+        url: 'http://localhost:80/api/yesOrNoQuestions',
         data: question
       })
     }
@@ -305,7 +303,7 @@ angular.module('dev-survey')
     this.multipleChoice = function(question) {
       return $http({
         method: 'POST',
-        url: 'http://localhost:3000/api/multipleChoiceQuestions',
+        url: 'http://localhost:80/api/multipleChoiceQuestions',
         data: question
       })
     }
@@ -313,7 +311,7 @@ angular.module('dev-survey')
     this.ranking = function(question) {
       return $http({
         method: 'POST',
-        url: 'http://localhost:3000/api/rankingQuestions',
+        url: 'http://localhost:80/api/rankingQuestions',
         data: question
       })
     }
@@ -321,7 +319,7 @@ angular.module('dev-survey')
     this.textField = function(question) {
       return $http({
         method: 'POST',
-        url: 'http://localhost:3000/api/textFieldQuestions',
+        url: 'http://localhost:80/api/textFieldQuestions',
         data: question
       })
     }
@@ -334,14 +332,14 @@ angular.module('dev-survey')
     this.getSurveys = function() {
       return $http({
         method: 'GET',
-        url: 'http://localhost:3000/api/surveys'
+        url: 'http://localhost:80/api/surveys'
       })
     }
 
     this.getOneSurvey = function(surveyId) {
       return $http({
         method: 'GET',
-        url: 'http://localhost:3000/api/surveys/' + surveyId
+        url: 'http://localhost:80/api/surveys/' + surveyId
       })
     }
 
@@ -356,7 +354,7 @@ angular.module('dev-survey')
 
         $http({
         method: 'POST',
-        url: 'http://localhost:3000/api/surveys',
+        url: 'http://localhost:80/api/surveys',
         data: name
       }).then(function(response) {
           objectId = response.data._id;
@@ -367,7 +365,7 @@ angular.module('dev-survey')
               }
               $http({
                 method: 'PUT',
-                url: 'http://localhost:3000/api/surveys/' + objectId + '?type=yesorno',
+                url: 'http://localhost:80/api/surveys/' + objectId + '?type=yesorno',
                 data: body
               }).then(function(response) {
                 console.log(response.data);
@@ -381,7 +379,7 @@ angular.module('dev-survey')
               }
               $http({
                 method: 'PUT',
-                url: 'http://localhost:3000/api/surveys/' + objectId + '?type=multiplechoice',
+                url: 'http://localhost:80/api/surveys/' + objectId + '?type=multiplechoice',
                 data: body
               }).then(function(response) {
 
@@ -395,7 +393,7 @@ angular.module('dev-survey')
               }
               $http({
                 method: 'PUT',
-                url: 'http://localhost:3000/api/surveys/' + objectId + '?type=ranking',
+                url: 'http://localhost:80/api/surveys/' + objectId + '?type=ranking',
                 data: body
               }).then(function(response) {
 
@@ -409,7 +407,7 @@ angular.module('dev-survey')
               }
               $http({
                 method: 'PUT',
-                url: 'http://localhost:3000/api/surveys/' + objectId + '?type=textfield',
+                url: 'http://localhost:80/api/surveys/' + objectId + '?type=textfield',
                 data: body
               }).then(function(response) {
 
@@ -433,7 +431,7 @@ angular.module('dev-survey')
     this.registerUser = function(user) {
       return $http({
         method: 'POST',
-        url: 'http://localhost:3000/api/users',
+        url: 'http://localhost:80/api/users',
         data: user
       })
     }
@@ -442,14 +440,14 @@ angular.module('dev-survey')
       console.log(loginUser);
       return $http({
         method: 'GET',
-        url: 'http://localhost:3000/api/users/' + loginUser.email + "?password=" + loginUser.password
+        url: 'http://localhost:80/api/users/' + loginUser.email + "?password=" + loginUser.password
       })
     }
 
     this.getUsers = function() {
       return $http({
         method: 'GET',
-        url: 'http://localhost:3000/api/users'
+        url: 'http://localhost:80/api/users'
       })
     }
 
@@ -457,7 +455,7 @@ angular.module('dev-survey')
       console.log(userIds, surveyId);
       return $http({
         method: 'PUT',
-        url: 'http://localhost:3000/api/users?surveyid=' + surveyId,
+        url: 'http://localhost:80/api/users?surveyid=' + surveyId,
         data: userIds
       })
     }
@@ -465,7 +463,7 @@ angular.module('dev-survey')
     this.getUserSurveys = function(userId) {
       return $http({
         method: 'GET',
-        url: 'http://localhost:3000/api/users/' + userId
+        url: 'http://localhost:80/api/users/' + userId
       })
     }
 

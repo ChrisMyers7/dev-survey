@@ -491,6 +491,26 @@ $font-stack1: 'Source Sans Pro', sans-serif;
               div:hover {
                 cursor: pointer;
               }
+
+              .facebook {
+                background: url('../../img/icons/facebook.png') center no-repeat;
+                background-size: cover;
+              }
+
+              .twitter {
+                background: url('../../img/icons/twitter.svg') center no-repeat;
+                background-size: cover;
+              }
+
+              .instagram {
+                background: url('../../img/icons/instagram.svg') center no-repeat;
+                background-size: cover;
+              }
+
+              .linked-in {
+                background: url('../../img/icons/linkedin.svg') center no-repeat;
+                background-size: cover;
+              }
           }
       }
   }
