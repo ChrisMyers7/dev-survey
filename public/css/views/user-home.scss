@@ -415,16 +415,16 @@ $font-stack1: 'Source Sans Pro', sans-serif;
 
           .user-home-survey-display-cont {
             width: 70%;
-            height: 60vh;
+            height: 70vh;
             margin: auto;
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
             justify-content: space-around;
+            overflow: scroll;
 
               .user-home-survey-display {
                 width: 100%;
-
 
                   div {
                     background: $dev-blue;

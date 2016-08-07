@@ -218,48 +218,48 @@ $font-stack1: 'Source Sans Pro', sans-serif;
       display: flex;
       margin: auto;
       flex-direction: column;
-      justify-content: center;
 // container for name
         .app-info {
-          height: 57vh;
-          width: 100%;
+          height: 87vh;
+          width: 100%;;
           display: flex;
           flex-direction: column;
           justify-content: center;
 
             .app-name {
-              height: 20vh;
+              // height: 5vh;
               width: 100%;
+              margin-top: 25vh;
               text-align: center;
               color: $white-background;
               font-family: $font-stack1;
               font-size: 5em;
             }
+            button {
+              height: 9vh;
+              margin: auto;
+              width: 15%;
+              background: $dev-blue;
+              color: $white-background;
+              font-size: 2.5em;
+              border: none;
+              font-family: $font-stack1;
+              // border-radius: 10px;
+            }
+
+              button:hover {
+                cursor: pointer;
+                background: $diff-blue;
+              }
         }
 // button containers
         .login-register-buttons {
-          height: 30vh;
+          // height: 30vh;
           width: 100%;
           display: flex;
           flex-direction: row;
-          background: rgba(166, 166, 166, 0.2);
 
-            button {
-              height: 15vh;
-              margin: auto;
-              width: 37%;
-              background: $dev-blue;
-              color: $white-background;
-              font-size: 3em;
-              border: none;
-              font-family: $font-stack1;
-              border-radius: 10px;
-            }
 
-            button:hover {
-              cursor: pointer;
-              background: $diff-blue;
-            }
         }
     }
 

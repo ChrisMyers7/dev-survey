@@ -6,7 +6,7 @@ angular.module('dev-survey')
     this.registerUser = function(user) {
       return $http({
         method: 'POST',
-        url: 'http://104.131.80.131:80/api/users',
+        url: '/api/users',
         data: user
       })
     }
@@ -15,14 +15,14 @@ angular.module('dev-survey')
       console.log(loginUser);
       return $http({
         method: 'GET',
-        url: 'http://104.131.80.131:80/api/users/' + loginUser.email + "?password=" + loginUser.password
+        url: '/api/users/' + loginUser.email + "?password=" + loginUser.password
       })
     }
 
     this.getUsers = function() {
       return $http({
         method: 'GET',
-        url: 'http://104.131.80.131:80/api/users'
+        url: '/api/users'
       })
     }
 
@@ -30,7 +30,7 @@ angular.module('dev-survey')
       console.log(userIds, surveyId);
       return $http({
         method: 'PUT',
-        url: 'http://104.131.80.131:80/api/users?surveyid=' + surveyId,
+        url: '/api/users?surveyid=' + surveyId,
         data: userIds
       })
     }
@@ -38,7 +38,7 @@ angular.module('dev-survey')
     this.getUserSurveys = function(userId) {
       return $http({
         method: 'GET',
-        url: 'http://104.131.80.131:80/api/users/' + userId
+        url: '/api/users/' + userId
       })
     }
 

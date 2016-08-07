@@ -11,7 +11,7 @@
   <section class="sign-in-input">
     <input class="user-input-fields" placeholder="Email" type="text" ng-model='email'>
 
-    <input class="user-input-fields" placeholder="Password" type="text" ng-model='password'>
+    <input class="user-input-fields" placeholder="Password" type="password" ng-model='password'>
 
     <button ng-click='login(email, password)'>Login</button>
   </section>
@@ -39,7 +39,7 @@
 
     <input placeholder="Email" type="text" ng-model='user.email'>
 
-    <input placeholder="Password" type="text" ng-model='user.password'>
+    <input placeholder="Password" type="password" ng-model='user.password'>
 
     <button ng-click='saveUser(user)'>Register as User</button>
 
@@ -68,12 +68,12 @@
       <div class="app-name">
         Survey Center
       </div>
+
+      <button class="home-login-cont" ng-click='toggleLogin()'>Login</button>
     </section>
 
     <section class="login-register-buttons">
-      <button class="home-login-cont" ng-click='toggleLogin()'>Login</button>
 
-      <button class="home-register-cont" ng-click='toggleRegister()'>Register</button>
     </section>
 
   </section>

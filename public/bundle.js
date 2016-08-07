@@ -301,7 +301,7 @@ angular.module('dev-survey')
     this.yesOrNo = function(question) {
       return $http({
         method: 'POST',
-        url: 'http://localhost:80/api/yesOrNoQuestions',
+        url: '/api/yesOrNoQuestions',
         data: question
       })
     }
@@ -309,7 +309,7 @@ angular.module('dev-survey')
     this.multipleChoice = function(question) {
       return $http({
         method: 'POST',
-        url: 'http://localhost:80/api/multipleChoiceQuestions',
+        url: '/api/multipleChoiceQuestions',
         data: question
       })
     }
@@ -317,7 +317,7 @@ angular.module('dev-survey')
     this.ranking = function(question) {
       return $http({
         method: 'POST',
-        url: 'http://localhost:80/api/rankingQuestions',
+        url: '/api/rankingQuestions',
         data: question
       })
     }
@@ -325,7 +325,7 @@ angular.module('dev-survey')
     this.textField = function(question) {
       return $http({
         method: 'POST',
-        url: 'http://localhost:80/api/textFieldQuestions',
+        url: '/api/textFieldQuestions',
         data: question
       })
     }
@@ -338,14 +338,14 @@ angular.module('dev-survey')
     this.getSurveys = function() {
       return $http({
         method: 'GET',
-        url: 'http://localhost:80/api/surveys'
+        url: '/api/surveys'
       })
     }
 
     this.getOneSurvey = function(surveyId) {
       return $http({
         method: 'GET',
-        url: 'http://localhost:80/api/surveys/' + surveyId
+        url: '/api/surveys/' + surveyId
       })
     }
 
@@ -360,7 +360,7 @@ angular.module('dev-survey')
 
         $http({
         method: 'POST',
-        url: 'http://localhost:80/api/surveys',
+        url: '/api/surveys',
         data: name
       }).then(function(response) {
           objectId = response.data._id;
@@ -371,7 +371,7 @@ angular.module('dev-survey')
               }
               $http({
                 method: 'PUT',
-                url: 'http://localhost:80/api/surveys/' + objectId + '?type=yesorno',
+                url: '/api/surveys/' + objectId + '?type=yesorno',
                 data: body
               }).then(function(response) {
                 console.log(response.data);
@@ -385,7 +385,7 @@ angular.module('dev-survey')
               }
               $http({
                 method: 'PUT',
-                url: 'http://localhost:80/api/surveys/' + objectId + '?type=multiplechoice',
+                url: '/api/surveys/' + objectId + '?type=multiplechoice',
                 data: body
               }).then(function(response) {
 
@@ -399,7 +399,7 @@ angular.module('dev-survey')
               }
               $http({
                 method: 'PUT',
-                url: 'http://localhost:80/api/surveys/' + objectId + '?type=ranking',
+                url: '/api/surveys/' + objectId + '?type=ranking',
                 data: body
               }).then(function(response) {
 
@@ -413,7 +413,7 @@ angular.module('dev-survey')
               }
               $http({
                 method: 'PUT',
-                url: 'http://localhost:80/api/surveys/' + objectId + '?type=textfield',
+                url: '/api/surveys/' + objectId + '?type=textfield',
                 data: body
               }).then(function(response) {
 
@@ -437,7 +437,7 @@ angular.module('dev-survey')
     this.registerUser = function(user) {
       return $http({
         method: 'POST',
-        url: 'http://localhost:80/api/users',
+        url: '/api/users',
         data: user
       })
     }
@@ -446,14 +446,14 @@ angular.module('dev-survey')
       console.log(loginUser);
       return $http({
         method: 'GET',
-        url: 'http://localhost:80/api/users/' + loginUser.email + "?password=" + loginUser.password
+        url: '/api/users/' + loginUser.email + "?password=" + loginUser.password
       })
     }
 
     this.getUsers = function() {
       return $http({
         method: 'GET',
-        url: 'http://localhost:80/api/users'
+        url: '/api/users'
       })
     }
 
@@ -461,7 +461,7 @@ angular.module('dev-survey')
       console.log(userIds, surveyId);
       return $http({
         method: 'PUT',
-        url: 'http://localhost:80/api/users?surveyid=' + surveyId,
+        url: '/api/users?surveyid=' + surveyId,
         data: userIds
       })
     }
@@ -469,7 +469,7 @@ angular.module('dev-survey')
     this.getUserSurveys = function(userId) {
       return $http({
         method: 'GET',
-        url: 'http://localhost:80/api/users/' + userId
+        url: '/api/users/' + userId
       })
     }
 

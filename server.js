@@ -1,9 +1,8 @@
 // node packages
 const express = require('express');
 const bodyParser = require('body-parser');
-const cors = require('cors');
 const mongoose = require('mongoose');
-mongoose.Promise = require('bluebird')
+mongoose.Promise = require('bluebird');
 
 // controllers
 const completedSurveyCtrl = require('./controllers/completedSurveyCtrl')
@@ -16,15 +15,11 @@ const textFieldCtrl = require('./controllers/textFieldCtrl')
 
 // initialization of express app and mongoose
 const app = express();
-mongoose.connect('mongodb://root/dev-survey');
+mongoose.connect('mongodb://localhost/dev-survey');
 
 // enabaling cross origin requests
-const corsOptions = {
-  origin: 'http://104.131.80.131/:80'
-}
 
 app.use(bodyParser.json());
-app.use(cors(corsOptions));
 app.use(express.static(__dirname + '/public'))
 
 // users endpoints

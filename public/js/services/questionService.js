@@ -4,7 +4,7 @@ angular.module('dev-survey')
     this.yesOrNo = function(question) {
       return $http({
         method: 'POST',
-        url: 'http://104.131.80.131:80/api/yesOrNoQuestions',
+        url: '/api/yesOrNoQuestions',
         data: question
       })
     }
@@ -12,7 +12,7 @@ angular.module('dev-survey')
     this.multipleChoice = function(question) {
       return $http({
         method: 'POST',
-        url: 'http://104.131.80.131:80/api/multipleChoiceQuestions',
+        url: '/api/multipleChoiceQuestions',
         data: question
       })
     }
@@ -20,7 +20,7 @@ angular.module('dev-survey')
     this.ranking = function(question) {
       return $http({
         method: 'POST',
-        url: 'http://104.131.80.131:80/api/rankingQuestions',
+        url: '/api/rankingQuestions',
         data: question
       })
     }
@@ -28,7 +28,7 @@ angular.module('dev-survey')
     this.textField = function(question) {
       return $http({
         method: 'POST',
-        url: 'http://104.131.80.131:80/api/textFieldQuestions',
+        url: '/api/textFieldQuestions',
         data: question
       })
     }
